@@ -1,11 +1,12 @@
 # Alpaca-MT
 Investigating the capability of [Alpaca](https://github.com/tatsu-lab/stanford_alpaca)-style [LLaMA](https://github.com/facebookresearch/llama) models for machine translation.
 
+Try the reproduced [Alpaca model](https://huggingface.co/wxjiao/alpaca-7b) at HuggingFace model hub.
 
 ## Machine Translation
 
 - **Data**: Flores subsets from [Is-ChatGPT-A-Good-Translator](https://github.com/wxjiao/Is-ChatGPT-A-Good-Translator)
-- **Systems**: Google Translate, DeepL, ChatGPT, GPT-4, LLaMA, and Alpaca (reproduced with HuggingFace)
+- **Systems**: Google Translate, DeepL, ChatGPT, GPT-4, LLaMA, and Alpaca (reproduced)
 - **Environment**: Huggingface v4.27.0  <!-- (commit ID: 3884da1) -->
 - **Prompt Format**: We follow Alpaca inference format.
 ```
