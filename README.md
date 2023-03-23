@@ -1,3 +1,9 @@
+
+<div align="center">
+    <img width="20%" alt="alpaca" src="https://user-images.githubusercontent.com/31032829/227085934-f4e7f99f-8b98-4c96-a091-e0f8743b6fb5.png">
+</div>
+
+
 # Alpaca-MT
 Investigating the capability of [Alpaca](https://github.com/tatsu-lab/stanford_alpaca)-style [LLaMA](https://github.com/facebookresearch/llama) models for machine translation.
 
