@@ -13,7 +13,7 @@ Try the reproduced [Alpaca model](https://huggingface.co/wxjiao/alpaca-7b) at Hu
 
 - **Data**: Flores subsets from [Is-ChatGPT-A-Good-Translator](https://github.com/wxjiao/Is-ChatGPT-A-Good-Translator)
 - **Systems**: Google Translate, DeepL, ChatGPT, GPT-4, LLaMA, and Alpaca/Alpaca-MT (reproduced)
-- **Environment**: Huggingface v4.27.0  <!-- (commit ID: 3884da1) -->
+- **Environment**: Huggingface 4.27.0.dev0  <!-- (commit ID: 3884da1) -->
 - **Prompt Format**: We follow Alpaca inference format.
 ```
 Below is an instruction that describes a task. Write a response that appropriately completes the request.
