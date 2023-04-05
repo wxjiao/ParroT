@@ -5,7 +5,7 @@
 </div>
 --->
 
-# :parrot: ParroT: Translating During Chat Using Large Language Models
+# :parrot: [ParroT](https://www.researchgate.net/publication/369797448_PARROT_Translating_During_Chat_Using_Large_Language_Models): Translating During Chat Using Large Language Models
 
 :fire: News: Codes, pretrained models are coming soon.
 
