@@ -1,10 +1,14 @@
 
+<!---
 <div align="center">
     <img width="20%" alt="alpaca" src="https://user-images.githubusercontent.com/31032829/227085934-f4e7f99f-8b98-4c96-a091-e0f8743b6fb5.png">
 </div>
+--->
 
+# :parrot: ParroT: Translating During Chat Using Large Language Models
 
-# Alpaca-MT
+:fire: News: Codes, pretrained models are coming soon.
+
 Investigating the capability of [Alpaca](https://github.com/tatsu-lab/stanford_alpaca)-style [LLaMA](https://github.com/facebookresearch/llama) models for machine translation.
 
 Try the reproduced [Alpaca model](https://huggingface.co/wxjiao/alpaca-7b) at HuggingFace model hub.
