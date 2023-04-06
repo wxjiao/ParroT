@@ -30,6 +30,7 @@ Large language models (LLMs) like ChatGPT and GPT-4 have exhibited remarkable ab
 - **Systems**: Google Translate, DeepL, ChatGPT, GPT-4, LLaMA, and Alpaca/Alpaca-MT (reproduced)
 - **Environment**: Huggingface 4.27.0.dev0  <!-- (commit ID: 3884da1) -->
 - **Prompt Format**: We follow Alpaca inference format.
+
 --->
 
 
@@ -37,6 +38,9 @@ Large language models (LLMs) like ChatGPT and GPT-4 have exhibited remarkable ab
 
 ### Datasets
 
+- Train Data: Stanford Alpaca, 
+- Test Data: [Flores subsets](https://github.com/wxjiao/Is-ChatGPT-A-Good-Translator), WMT22 test sets
+- Instruction-following format:
 ```
 Below is an instruction that describes a task. Write a response that appropriately completes the request.
 
