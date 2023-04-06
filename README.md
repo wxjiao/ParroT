@@ -66,7 +66,7 @@ git clone --branch llama_push  https://github.com/zphang/transformers.git
 
 # Install
 cd transformers
-pip install .
+pip install -e .
 ```
 - Datasets 2.10.0
 - Tokenizers 0.13.2
