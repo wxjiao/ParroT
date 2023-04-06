@@ -14,7 +14,7 @@ Large language models (LLMs) like ChatGPT and GPT-4 have exhibited remarkable ab
 
 <div align="center">
     <img width="50%" alt="LLMs-MT" src="https://user-images.githubusercontent.com/31032829/230255125-bcf7393c-fd3c-4210-a3c6-60dc86a9721d.png">
-    <p class="image-caption">Figure 0: Framework of ParroT. Hints are (optional) extra requirements to regulate the translation process.</p>
+    <p class="image-caption">Figure 1: Framework of ParroT. Hints are (optional) extra requirements to regulate the translation process.</p>
 </div>
 
 
