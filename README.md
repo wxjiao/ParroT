@@ -55,17 +55,22 @@ The inspection hasn’t found serious violation of laws and regulations. The mar
 ### Environment
 
 We develop ParroT based on LLaMA with Hugging Face's transformers library by installing it from a particular fork (refer to this [PR](https://github.com/huggingface/transformers/pull/21955)). The hash of the specific commit we installed was `3884da12ce327667d4df5101aef3533cc32be61f`.
-Clone the fork as below:
-```
-git clone --branch llama_push  https://github.com/zphang/transformers.git
-```
 
 Framework Versions:
 - Python 3.8.12
 - Pytorch 1.10.0
-- Transformers 4.27.0.dev0
+- Transformers 4.27.0.dev0: clone the fork and install
+```
+git clone --branch llama_push  https://github.com/zphang/transformers.git
+cd transformers
+pip install .
+```
 - Datasets 2.10.0
 - Tokenizers 0.13.2
+- Others
+```
+pip install -r requirements.txt
+```
 
 
 
