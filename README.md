@@ -26,7 +26,7 @@ Large language models (LLMs) like ChatGPT and GPT-4 have exhibited remarkable ab
 
 ### Datasets
 
-- Train Data: [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca), 
+- Train Data: [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca), data_parrot_hf.json
 - Test Data: [Flores subsets](https://github.com/wxjiao/Is-ChatGPT-A-Good-Translator), [WMT22 test sets](https://www.statmt.org/wmt22/translation-task.html)
 - Instruction-following format:
 ```
@@ -119,6 +119,7 @@ torchrun --nproc_per_node=8 --master_port=<your_random_port> ${train_path} \
     --seed 1 \
     --output_dir ${model_save}
 ```
+Note: You may try `--gradient_checkpointing True` to reduce memory burden and increase `--per_device_train_batch_size` to speedup the finetuning process.
 
 
 ### Inference (`inference.py`)
