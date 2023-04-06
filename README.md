@@ -23,13 +23,20 @@ Large language models (LLMs) like ChatGPT and GPT-4 have exhibited remarkable ab
 </div>
 
 
-
+<!---
 ## Machine Translation
 
 - **Data**: Flores subsets from [Is-ChatGPT-A-Good-Translator](https://github.com/wxjiao/Is-ChatGPT-A-Good-Translator)
 - **Systems**: Google Translate, DeepL, ChatGPT, GPT-4, LLaMA, and Alpaca/Alpaca-MT (reproduced)
 - **Environment**: Huggingface 4.27.0.dev0  <!-- (commit ID: 3884da1) -->
 - **Prompt Format**: We follow Alpaca inference format.
+--->
+
+
+## Configurations
+
+### Datasets
+
 ```
 Below is an instruction that describes a task. Write a response that appropriately completes the request.
 
@@ -48,3 +55,23 @@ Translate the following sentences from Chinese to English.
 </div>
 --->
 
+### Environment
+
+### Finetune
+
+### Evaluate
+
+
+## Public Impact
+
+### Citation
+Please kindly cite our report if you find it helpful:
+
+```ruby
+@inproceedings{jiao2023parrot,
+  title={ParroT: Translating During Chat Using Large Language Models}, 
+  author={Wenxiang Jiao and Jen-tse Huang and Wenxuan Wang and Xing Wang and Shuming Shi and Zhaopeng Tu},
+  booktitle = {ArXiv},
+  year      = {2023}
+}
+```
