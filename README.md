@@ -54,6 +54,11 @@ The inspection hasn’t found serious violation of laws and regulations. The mar
 
 ### Environment
 
+```
+Transformers 4.27.0.dev0
+Pytorch 1.10.0
+Datasets 2.10.0
+```
 
 ### Inference (`inference.py`)
 
