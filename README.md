@@ -14,7 +14,7 @@ Large language models (LLMs) like ChatGPT and GPT-4 have exhibited remarkable ab
 
 > Parrots are smart birds that can respond to simple commands or questions. The question is whether they're just mimicking, or really intelligent enough to communicate with humans. This is similar to what we currently speculate about LLMs.
 
-> Promoting the good is no doubt while punishing the evil makes the good to sustain. 
+> Promoting the good is essential, but punishing the evil is also necessary to ensure that goodness prevails. Similarly, aligning LLMs with human feedbacks is exactly to learn from correct examples and discriminate erroneous examples.
 
 
 <div align="center">
