@@ -14,7 +14,7 @@ Large language models (LLMs) like ChatGPT and GPT-4 have exhibited remarkable ab
 
 > Parrots are smart birds that can respond to simple commands or questions. The question is whether they're just mimicking, or really intelligent enough to communicate with humans. This is similar to what we currently speculate about LLMs.
 
-> Teaching right things
+> Promoting the good is no doubt while punishing the evil makes the good to sustain. 
 
 
 <div align="center">
