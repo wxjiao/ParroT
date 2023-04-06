@@ -26,7 +26,7 @@ Large language models (LLMs) like ChatGPT and GPT-4 have exhibited remarkable ab
 
 ### Datasets
 
-- Train Data: [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca), data_parrot_hf.json
+- Train Data: [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca), data_parrot_hf.json (To be uploaded)
 - Test Data: [Flores subsets](https://github.com/wxjiao/Is-ChatGPT-A-Good-Translator), [WMT22 test sets](https://www.statmt.org/wmt22/translation-task.html)
 - Instruction-following format:
 ```
@@ -94,12 +94,12 @@ model_save=<your_proj_path>/parrot-hint-7b
 torchrun --nproc_per_node=8 --master_port=<your_random_port> ${train_path} \
     --deepspeed deepspeed_config.json \
     --model_name_or_path ${mode_path} \
-    --train_file data/data_alpaca_hf.json \
+    --train_file data/data_parrot_hf.json \
     --preprocessing_num_workers 16 \
     --per_device_train_batch_size 4 \
     --per_device_eval_batch_size 4 \
     --gradient_accumulation_steps 4 \
-    --num_train_epochs 3.0 \
+    --num_train_epochs 1.5 \
     --save_strategy "steps" \
     --save_steps 500 \
     --save_total_limit 1 \
