@@ -8,10 +8,16 @@
 # :parrot: [ParroT](https://www.researchgate.net/publication/369797448_PARROT_Translating_During_Chat_Using_Large_Language_Models): Translating During Chat Using Large Language Models
 
 :fire: News: Codes, pretrained models are coming soon.
+- :huggingface: Try the pretrained models at HuggingFace model hub: [[Alpaca-7b]](https://huggingface.co/wxjiao/alpaca-7b) [[ParroT-7b]](https://huggingface.co/wxjiao/ParroT-7b)
 
-Investigating the capability of [Alpaca](https://github.com/tatsu-lab/stanford_alpaca)-style [LLaMA](https://github.com/facebookresearch/llama) models for machine translation.
+Large language models (LLMs) like ChatGPT and GPT-4 have exhibited remarkable abilities on a wide range of natural language processing (NLP) tasks, including various ma- chine translation abilities accomplished during chat. However, these models are only accessible through restricted APIs, which creates barriers to new research and advancements in the field. Therefore, we propose the ParroT framework to enhance and regulate the translation abilities during chat based on opensourced LLMs (e.g., [LLaMA](https://github.com/facebookresearch/llama)) and human written translation and evaluation data. Specifically, ParroT reformulates translation data into the instruction-following style, and introduces a “Hint” field for incorporating extra requirements to regulate the translation process. 
 
-Try the reproduced [Alpaca model](https://huggingface.co/wxjiao/alpaca-7b) at HuggingFace model hub.
+<div align="center">
+    <img width="70%" alt="LLMs-MT" src="https://user-images.githubusercontent.com/31032829/230255125-bcf7393c-fd3c-4210-a3c6-60dc86a9721d.png">
+    <p class="image-caption">Figure 0: Framework of ParroT. Hints are (optional) extra requirements to regulate the translation process.</p>
+</div>
+
+
 
 ## Machine Translation
 
