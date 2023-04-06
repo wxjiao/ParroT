@@ -59,9 +59,12 @@ We develop ParroT based on LLaMA with Hugging Face's transformers library by ins
 Framework Versions:
 - Python 3.8.12
 - Pytorch 1.10.0
-- Transformers 4.27.0.dev0: clone the fork and install
+- Transformers 4.27.0.dev0
 ```
+# Clone the fork or use the transformers provided in this repo
 git clone --branch llama_push  https://github.com/zphang/transformers.git
+
+# Install
 cd transformers
 pip install .
 ```
