@@ -63,12 +63,12 @@ The script supports generation with and without hints using different instructio
 
 Example usage:
 ```
-python3 ./inference.py --model-name-or-path [YOUR-PROJ-PATH]/llama-7b \
+python3 inference.py --model-name-or-path [YOUR-PROJ-PATH]/llama-7b \
     -lp 'zh-en' \
     -t 0.1 \
-    -ins ./test/instruct_inf.txt \
-    -i ./test/test_rand_50.zh.txt \
-    -o ./test/test_rand_50.zh-en.none-hint.txt \
+    -ins test/instruct_inf.txt \
+    -i test/test_rand_50.zh.txt \
+    -o test/test_rand_50.zh-en.none-hint.txt \
     -sa 'beam'
 ```
 
