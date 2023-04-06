@@ -34,11 +34,16 @@ Large language models (LLMs) like ChatGPT and GPT-4 have exhibited remarkable ab
 Below is an instruction that describes a task. Write a response that appropriately completes the request.
 
 ### Instruction:
-Translate the following sentences from Chinese to English.
+We are translating the following sentences from Chinese to English.
+    
+### Input:
+检查情况显示，市场销售的粮油、肉类、水果、蔬菜、蛋奶等生活必需品供应充足，商品价格基本稳定，未发现严重违法违规行为，市场经营秩序总体平稳。
 
-他称，他制作了一个 WiFi 门铃。
+### Hint: A translation with major accuracy/mistranslation errors could be
 
-### Response:He said that he had made a WiFi doorbell.
+### Response:The results of the inspection indicate the sufficient supply of living necessities <v>on marketing</v> 
+including cereals and oils, meat, fruits, vegetables, eggs and milk, and the basically stabilized commodity price. 
+The inspection hasn’t found serious violation of laws and regulations. The market order is stable on an overall basis.
 ```
 
 <!---
