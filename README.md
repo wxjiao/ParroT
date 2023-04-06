@@ -52,7 +52,24 @@ Translate the following sentences from Chinese to English.
 
 ### Finetune
 
-### Evaluate
+### Inference
+The script supports the inference with and without hints using different instructions.
+- Default: `Translate the following sentences from [SRC] to [TGT].`
+- No Errors: `Translate the following sentences from [SRC] to [TGT].###A translation with no errors could be`
+- Minor Errors: `Translate the following sentences from [SRC] to [TGT].###A translation with minor errors could be`
+- Major Errors: `Translate the following sentences from [SRC] to [TGT].###A translation with major errors could be`
+- Preferred: `Translate the following sentences from [SRC] to [TGT].###We prefer to translate it to`
+
+Translate with default instruction:
+```
+python3 ./inference.py --model-name-or-path [YOUR-PROJ-PATH]/llama-7b \
+    -lp 'zh-en' \
+    -t 0.1 \
+    -ins ./test/instruct_inf.txt \
+    -i ./test/test_rand_50.zh.txt \
+    -o ./test/test_rand_50.zh-en.none-hint.txt \
+    -sa 'beam'
+```
 
 
 ## Public Impact
