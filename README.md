@@ -65,7 +65,7 @@ Translate the following sentences from Chinese to English.
 ## Public Impact
 
 ### Citation
-Please kindly cite our report if you find it helpful:
+Please kindly cite our paper if you find it helpful:
 
 ```ruby
 @inproceedings{jiao2023parrot,
