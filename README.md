@@ -77,7 +77,8 @@ pip install -r requirements.txt
 
 
 ### Finetune
-TODO
+We modify the example script of language modeling in transformers for finetuning, i.e., `run_clm.py` with the built in HuggingFace `Trainer`, which supports data streaming.
+DeepSpeed ZeRO stage 3 is adopted for model parallel.
 
 
 ### Inference (`inference.py`)
