@@ -77,7 +77,7 @@ pip install -r requirements.txt
 
 
 ### Finetune
-TODO.
+TODO
 
 
 ### Inference (`inference.py`)
