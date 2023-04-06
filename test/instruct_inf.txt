@@ -1,0 +1,1 @@
+Translate the following sentences from [SRC] to [TGT].
