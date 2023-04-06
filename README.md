@@ -77,8 +77,44 @@ pip install -r requirements.txt
 
 
 ### Finetune
-We modify the example script of language modeling in transformers for finetuning, i.e., `run_clm.py` with the built in HuggingFace `Trainer`, which supports data streaming.
-DeepSpeed ZeRO stage 3 is adopted for model parallel.
+We modify the example script of language modeling in transformers for finetuning, i.e., `run_clm.py` with the built in HuggingFace `Trainer`.
+We did not change any arguments so it would be easy to get started if you are familiar with `run_clm.py`. Also, this script supports data streaming, which might be helpful for handling larger datasets.
+[DeepSpeed ZeRO stage 3](https://github.com/microsoft/DeepSpeed) is adopted for model parallel.
+
+Example usage:
+```
+train_path=transformers/examples/pytorch/language-modeling/run_clm_alpaca.py
+model_path=<your_proj_path>/llama-7b
+model_save=<your_proj_path>/parrot-hint-7b
+
+torchrun --nproc_per_node=8 --master_port=<your_random_port> ${train_path} \
+    --deepspeed deepspeed_config.json \
+    --model_name_or_path ${mode_path} \
+    --train_file data/data_parrot_hf.json \
+    --preprocessing_num_workers 16 \
+    --per_device_train_batch_size 4 \
+    --per_device_eval_batch_size 4 \
+    --gradient_accumulation_steps 4 \
+    --num_train_epochs 1.5 \
+    --save_strategy "steps" \
+    --save_steps 500 \
+    --save_total_limit 1 \
+    --learning_rate 2e-5 \
+    --weight_decay 0. \
+    --warmup_ratio 0.03 \
+    --lr_scheduler_type "cosine" \
+    --logging_steps 10 \
+    --block_size 512 \
+    --do_train \
+    --evaluation_strategy "no" \
+    --validation_split_percentage 0 \
+    --fp16 True \
+    --fp16_full_eval True \
+    --streaming \
+    --ddp_timeout 3600 \
+    --seed 1 \
+    --output_dir ${model_save}
+```
 
 
 ### Inference (`inference.py`)
@@ -101,7 +137,7 @@ Simply switch the inference instruction for different strategies.
 Example usage:
 ```
 # Translation
-python3 inference.py --model-name-or-path 'wxjiao/ParroT-Hint-7b' \
+python3 inference.py --model-name-or-path <your_proj_path>/parrot-hint-7b \
     -lp 'zh-en' \
     -t 0.1 \
     -sa 'beam' \
@@ -110,7 +146,7 @@ python3 inference.py --model-name-or-path 'wxjiao/ParroT-Hint-7b' \
     -o test/test_rand_50.zh-en.none-hint.txt
     
 # Text generation
-python3 inference.py --model-name-or-path 'wxjiao/ParroT-Hint-7b' \
+python3 inference.py --model-name-or-path <your_proj_path>/parrot-hint-7b \
     -t 0.7 \
     -sa 'sample' \
     -i test/test_case.txt \
