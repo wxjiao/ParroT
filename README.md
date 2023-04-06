@@ -54,25 +54,39 @@ Translate the following sentences from Chinese to English.
 
 ### Inference (`inference.py`)
 
-The script supports generation with and without hints using different instructions. Switch the inference instruction for different strategies.
-- None (default): `Translate the following sentences from [SRC] to [TGT].`
-- No Errors: `Translate the following sentences from [SRC] to [TGT].###A translation with no errors could be`
-- Minor Errors: `Translate the following sentences from [SRC] to [TGT].###A translation with minor errors could be`
-- Major Errors: `Translate the following sentences from [SRC] to [TGT].###A translation with major errors could be`
-- Preferred: `Translate the following sentences from [SRC] to [TGT].###We prefer to translate it to`
+The script supports generation with and without hints using different instructions. 
+The hints are appended to the default instruction with `###` as a delimiter.
+Simply switch the inference instruction for different strategies. 
+
+- None: instruct_inf.txt 
+    - `Translate the following sentences from [SRC] to [TGT].`
+- No Errors: instruct_inf_e2t.txt 
+    - `Translate the following sentences from [SRC] to [TGT].###A translation with no errors could be`
+- Minor Errors: instruct_inf_e2t_minor.txt 
+    - `Translate the following sentences from [SRC] to [TGT].###A translation with minor errors could be`
+- Major Errors: instruct_inf_e2t_major.txt 
+    - `Translate the following sentences from [SRC] to [TGT].###A translation with major errors could be`
+- Preferred: instruct_inf_t2t.txt 
+    - `Translate the following sentences from [SRC] to [TGT].###We prefer to translate it to`
 
 Example usage:
 ```
-python3 inference.py --model-name-or-path [YOUR-PROJ-PATH]/llama-7b \
+# Translation
+python3 inference.py --model-name-or-path 'wxjiao/ParroT-Hint-7b' \
     -lp 'zh-en' \
     -t 0.1 \
+    -sa 'beam' \
     -ins test/instruct_inf.txt \
     -i test/test_rand_50.zh.txt \
-    -o test/test_rand_50.zh-en.none-hint.txt \
-    -sa 'beam'
+    -o test/test_rand_50.zh-en.none-hint.txt
+    
+# Text generation
+python3 inference.py --model-name-or-path 'wxjiao/ParroT-Hint-7b' \
+    -t 0.7 \
+    -sa 'sample' \
+    -i test/test_case.txt \
+    -o test/test_case.general-task.txt
 ```
-
-
 
 
 
