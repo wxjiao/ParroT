@@ -81,7 +81,7 @@ We modify the example script of language modeling in transformers for finetuning
 We did not change any arguments so it would be easy to get started if you are familiar with `run_clm.py`. Also, this script supports data streaming, which might be helpful for handling larger datasets.
 [DeepSpeed ZeRO stage 3](https://github.com/microsoft/DeepSpeed) is adopted for model parallel.
 
-Example usage:
+Example usage on 8 GPUs:
 ```
 train_path=transformers/examples/pytorch/language-modeling/run_clm_alpaca.py
 model_path=<your_proj_path>/llama-7b
