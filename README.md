@@ -81,6 +81,10 @@ We modify the example script of language modeling in transformers for finetuning
 We did not change any arguments so it would be easy to get started if you are familiar with `run_clm.py`. Also, this script supports data streaming, which might be helpful for handling larger datasets.
 [DeepSpeed ZeRO stage 3](https://github.com/microsoft/DeepSpeed) is adopted for model parallel.
 
+LLaMA-7b:
+- Weights for the LLaMA models can be obtained from by filling out this [Form](https://docs.google.com/forms/d/e/1FAIpQLSfqNECQnMkycAp2jP4Z9TFX0cGR4uf7b_fBxjY_OjhJILlKGA/viewform)
+- Convert the LLaMA weights into the HuggingFace format by following the instructions in this [Doc](https://huggingface.co/docs/transformers/main/model_doc/llama)
+
 Example usage on 8 GPUs:
 ```
 train_path=transformers/examples/pytorch/language-modeling/run_clm_alpaca.py
