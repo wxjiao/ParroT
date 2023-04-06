@@ -76,6 +76,9 @@ pip install -r requirements.txt
 ```
 
 
+### Finetune
+TODO.
+
 
 ### Inference (`inference.py`)
 
@@ -112,7 +115,6 @@ python3 inference.py --model-name-or-path 'wxjiao/ParroT-Hint-7b' \
     -i test/test_case.txt \
     -o test/test_case.general-task.txt
 ```
-
 
 
 ## Public Impact
