@@ -5,7 +5,7 @@
 </div>
 --->
 
-# :parrot: [ParroT](https://www.researchgate.net/publication/369797448_PARROT_Translating_During_Chat_Using_Large_Language_Models): Translating During Chat Using Large Language Models
+# :parrot: [ParroT](https://arxiv.org/abs/2304.02426): Translating During Chat Using Large Language Models
 
 :fire: News: Codes and data are waiting for double-check.
 - :hugs: Try the pretrained models at HuggingFace model hub: [[Alpaca-7b]](https://huggingface.co/wxjiao/alpaca-7b), [[ParroT-7b]](https://huggingface.co/wxjiao/ParroT-7b), [[ParroT-Hint-7b]](https://huggingface.co/wxjiao/ParroT-Hint-7b)
