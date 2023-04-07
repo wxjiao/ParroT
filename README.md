@@ -83,20 +83,32 @@ LLaMA-7b:
 - Weights for the LLaMA models can be obtained from by filling out this [Form](https://docs.google.com/forms/d/e/1FAIpQLSfqNECQnMkycAp2jP4Z9TFX0cGR4uf7b_fBxjY_OjhJILlKGA/viewform)
 - Convert the LLaMA weights into the HuggingFace format by following the instructions in this [Doc](https://huggingface.co/docs/transformers/main/model_doc/llama)
 
-Example usage on 8 GPUs:
+Example usage on 16 GPUs by 2 nodes:
 ```
+export NCCL_DEBUG=INFO
+export NCCL_SOCKET_IFNAME=eth1
+export NCCL_IB_GID_INDEX=3
+export NCCL_IB_SL=3
+export NCCL_NET_GDR_READ=1
+
+export MASTER_ADDR="${CHIEF_IP:=localhost}"
+export MASTER_PORT="${MASTER_PORT:=29500}"
+
 train_path=transformers/examples/pytorch/language-modeling/run_clm_alpaca.py
 model_path=<your_proj_path>/llama-7b
 model_save=<your_proj_path>/parrot-hint-7b
 
-torchrun --nproc_per_node=8 --master_port=<your_random_port> ${train_path} \
+# HOST_NUM will be 2
+torchrun --nnodes $HOST_NUM --node_rank $INDEX --nproc_per_node 8 \
+    --master_addr $MASTER_ADDR --master_port $MASTER_PORT  \
+    ${train_path} \
     --deepspeed deepspeed_config.json \
     --model_name_or_path ${model_path} \
     --train_file data/data_parrot_hf.json \
     --preprocessing_num_workers 16 \
     --per_device_train_batch_size 4 \
     --per_device_eval_batch_size 4 \
-    --gradient_accumulation_steps 4 \
+    --gradient_accumulation_steps 2 \
     --num_train_epochs 1.5 \
     --save_strategy "steps" \
     --save_steps 500 \
