@@ -59,8 +59,6 @@ We develop ParroT based on LLaMA with Hugging Face's transformers library by ins
 Framework Versions:
 - Python 3.8.12
 - Pytorch 1.10.0
-- Datasets 2.10.0
-- Tokenizers 0.13.2
 - Transformers 4.27.0.dev0
 ```
 # Clone the fork or use the transformers provided in this repo
