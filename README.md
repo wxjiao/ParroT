@@ -94,7 +94,7 @@ export NCCL_NET_GDR_READ=1
 export MASTER_ADDR="${CHIEF_IP:=localhost}"
 export MASTER_PORT="${MASTER_PORT:=29500}"
 
-train_path=transformers/examples/pytorch/language-modeling/run_clm_alpaca.py
+train_path=transformers/examples/pytorch/language-modeling/run_clm_llms.py
 model_path=<your_proj_path>/llama-7b
 model_save=<your_proj_path>/parrot-hint-7b
 
