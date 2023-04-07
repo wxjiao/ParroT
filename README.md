@@ -85,6 +85,8 @@ LLaMA-7b:
 
 Example usage on 8 V100 by 1 node:
 ```
+# Multi-nodes are also supported
+
 export NCCL_DEBUG=INFO
 export NCCL_SOCKET_IFNAME=eth1
 export NCCL_IB_GID_INDEX=3
