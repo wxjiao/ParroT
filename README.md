@@ -83,7 +83,7 @@ LLaMA-7b:
 - Weights for the LLaMA models can be obtained from by filling out this [Form](https://docs.google.com/forms/d/e/1FAIpQLSfqNECQnMkycAp2jP4Z9TFX0cGR4uf7b_fBxjY_OjhJILlKGA/viewform)
 - Convert the LLaMA weights into the HuggingFace format by following the instructions in this [Doc](https://huggingface.co/docs/transformers/main/model_doc/llama)
 
-Example usage on 16 GPUs by 2 nodes:
+Example usage on 8 V100 by 1 node:
 ```
 export NCCL_DEBUG=INFO
 export NCCL_SOCKET_IFNAME=eth1
@@ -98,7 +98,7 @@ train_path=transformers/examples/pytorch/language-modeling/run_clm_llms.py
 model_path=<your_proj_path>/llama-7b
 model_save=<your_proj_path>/parrot-hint-7b
 
-# HOST_NUM will be 2
+# HOST_NUM will be 1
 torchrun --nnodes $HOST_NUM --node_rank $INDEX --nproc_per_node 8 \
     --master_addr $MASTER_ADDR --master_port $MASTER_PORT  \
     ${train_path} \
@@ -108,7 +108,7 @@ torchrun --nnodes $HOST_NUM --node_rank $INDEX --nproc_per_node 8 \
     --preprocessing_num_workers 16 \
     --per_device_train_batch_size 4 \
     --per_device_eval_batch_size 4 \
-    --gradient_accumulation_steps 2 \
+    --gradient_accumulation_steps 4 \
     --num_train_epochs 1.5 \
     --save_strategy "steps" \
     --save_steps 500 \
@@ -127,10 +127,13 @@ torchrun --nnodes $HOST_NUM --node_rank $INDEX --nproc_per_node 8 \
     --streaming \
     --ddp_timeout 3600 \
     --seed 1 \
+    --gradient_checkpointing True \
     --output_dir ${model_save}
 ```
-Note: You may try `--gradient_checkpointing True` to reduce memory burden and increase `--per_device_train_batch_size` to speedup the finetuning process.
 
+<!---
+Note: You may try `--gradient_checkpointing True` to reduce memory burden and increase `--per_device_train_batch_size` to speedup the finetuning process.
+--->
 
 ### Inference (`inference.py`)
 
