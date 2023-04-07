@@ -93,7 +93,7 @@ model_save=<your_proj_path>/parrot-hint-7b
 
 torchrun --nproc_per_node=8 --master_port=<your_random_port> ${train_path} \
     --deepspeed deepspeed_config.json \
-    --model_name_or_path ${mode_path} \
+    --model_name_or_path ${model_path} \
     --train_file data/data_parrot_hf.json \
     --preprocessing_num_workers 16 \
     --per_device_train_batch_size 4 \
