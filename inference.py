@@ -111,7 +111,11 @@ if __name__ == "__main__":
     # Load checkpoints
     model = AutoModelForCausalLM.from_pretrained(model_name_or_path, torch_dtype=torch.float16, device_map="auto")
     print(model.hf_device_map)
-    tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, use_fast=False)
+    # bloom uses only fast tokenize
+    to_use_fast = False
+    if "bloom" in model_name_or_path:
+        to_use_fast = True
+    tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, use_fast=to_use_fast)
     tokenizer.padding_side = "left"
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
