@@ -5,10 +5,11 @@
 </div>
 --->
 
-# :parrot: [ParroT](https://arxiv.org/abs/2304.02426): Translating During Chat Using Large Language Models
+# :parrot: ParroT: Translating During Chat Using Large Language Models
 
-:fire: News: Codes and data are waiting for double-check.
+:fire: **News** :fire:
 - :hugs: Try the pretrained models at HuggingFace model hub: [[Alpaca-7b]](https://huggingface.co/wxjiao/alpaca-7b), [[ParroT-7b]](https://huggingface.co/wxjiao/ParroT-7b), [[ParroT-Hint-7b]](https://huggingface.co/wxjiao/ParroT-Hint-7b)
+- :page_facing_up: The preprint is available now on arxiv, refer to it for more details: [[paper]](https://arxiv.org/abs/2304.02426) 
 
 > Parrots are smart birds that can respond to simple commands or questions. The question is whether they're just mimicking, or really intelligent enough to communicate with humans. This is similar to what we currently speculate about LLMs.
 
