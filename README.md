@@ -81,7 +81,7 @@ We did not change any arguments so it would be easy to get started if you are fa
 [DeepSpeed ZeRO stage 3](https://github.com/microsoft/DeepSpeed) is adopted for model parallel.
 
 LLaMA-7b:
-- Weights for the LLaMA models can be obtained from by filling out this [Form](https://docs.google.com/forms/d/e/1FAIpQLSfqNECQnMkycAp2jP4Z9TFX0cGR4uf7b_fBxjY_OjhJILlKGA/viewform)
+- Original weights for the LLaMA models can be obtained by filling out this [Form](https://docs.google.com/forms/d/e/1FAIpQLSfqNECQnMkycAp2jP4Z9TFX0cGR4uf7b_fBxjY_OjhJILlKGA/viewform)
 - Convert the LLaMA weights into the HuggingFace format by following the instructions in this [Doc](https://huggingface.co/docs/transformers/main/model_doc/llama)
 
 Example usage on 8 V100 by 1 node:
