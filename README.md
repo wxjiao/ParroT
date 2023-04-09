@@ -223,6 +223,14 @@ Now you can talk to your own Chatbot!
 
 ## Public Impact
 
+### Acknowledgement
+This project cannot be developed without the following resources:
+- Meta AI `LLaMA`: https://github.com/facebookresearch/llama
+- HuggingFace developers on `LLaMA`: https://github.com/huggingface/transformers/pull/21955
+- Stanford `Alpaca`: https://github.com/tatsu-lab/stanford_alpaca
+- `llama.cpp` by [@ggerganov](https://github.com/ggerganov/llama.cpp) and [@comex](https://github.com/comex/llama.cpp)
+
+
 ### Citation
 Please kindly cite our paper if you find it helpful:
 
