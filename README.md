@@ -55,7 +55,7 @@ The inspection hasn’t found serious violation of laws and regulations. The mar
 
 ### Environment
 
-We develop ParroT based on LLaMA with Hugging Face's transformers library by installing it from a particular fork (refer to this [PR](https://github.com/huggingface/transformers/pull/21955)). The hash of the specific commit we installed was `3884da12ce327667d4df5101aef3533cc32be61f`.
+We develop ParroT based on LLaMA with HuggingFace's transformers library by installing it from a particular fork (refer to this [PR](https://github.com/huggingface/transformers/pull/21955)). The hash of the specific commit we installed was `3884da12ce327667d4df5101aef3533cc32be61f`.
 
 Framework Versions:
 - Python 3.8.12
