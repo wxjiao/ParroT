@@ -176,7 +176,11 @@ python3 inference.py --model-name-or-path <your_proj_path>/parrot-hint-7b \
 
 ## Run LLMs on your MacBook
 
-Python 3.10.10 Works.
+Try [llama.cpp](https://github.com/ggerganov/llama.cpp) to run the LLMs using 4-bit quantization on a MacBook.
+We adopt a specific fork from [comex/llama.cpp](https://github.com/comex/llama.cpp/tree/convert-script) which supports the conversion of HuggingFace models to `ggml` format.
+
+We recommend the use of Python 3.10.10 for `convert.py` since we encountered bugs with Python 3.9.5.
+> TypeError: 'staticmethod' object is not callable
 
 ```
 # Clone the specific fork 
@@ -196,6 +200,10 @@ python3 convert.py models/alpaca/pytorch_model.bin
 # Run instruction mode with Alpaca
 ./main -m ./models/alpaca/ggml-model-q4_0.bin --color -f ./prompts/alpaca.txt -ins -b 256 --top_k 10000 --temp 0.2 --repeat_penalty 1 -t 7
 ```
+
+Now you can talk with your own Chatbot!
+
+
 
 ## Public Impact
 
