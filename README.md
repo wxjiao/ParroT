@@ -201,11 +201,11 @@ python3 convert.py models/alpaca/pytorch_model.bin
 ./main -m ./models/alpaca/ggml-model-q4_0.bin --color -f ./prompts/alpaca.txt -ins -b 256 --top_p 0.95 --top_k 50 --temp 0.7 --repeat_penalty 1 -t 7
 ```
 
-Now you can talk with your own Chatbot!
+Now you can talk to your own Chatbot!
 
 <div align="center">
-    <img width="90%" alt="alpaca" src="https://user-images.githubusercontent.com/31032829/230754675-c61156df-8321-4d21-bbf3-5ce74ef681df.png">
-    <img width="90%" alt="alpaca" src="https://user-images.githubusercontent.com/31032829/230754701-19ecf2fa-6363-4253-92e3-4dc6f21f6480.png">
+    <img width="80%" alt="alpaca" src="https://user-images.githubusercontent.com/31032829/230754675-c61156df-8321-4d21-bbf3-5ce74ef681df.png">
+    <img width="80%" alt="alpaca" src="https://user-images.githubusercontent.com/31032829/230754701-19ecf2fa-6363-4253-92e3-4dc6f21f6480.png">
 </div>
 
 
