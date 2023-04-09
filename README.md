@@ -174,9 +174,28 @@ python3 inference.py --model-name-or-path <your_proj_path>/parrot-hint-7b \
     -o test/test_case.general-task.txt
 ```
 
-## Run LLMs on Mac
+## Run LLMs on your MacBook
 
+Python 3.10.10 Works.
 
+```
+# Clone the specific fork 
+git clone --branch convert-script https://github.com/comex/llama.cpp.git
+cd llama.cpp
+make
+
+# Install Python dependencies
+python3 -m pip install -r requirements.txt
+
+# Convert the 7b model to ggml fp16 format
+python3 convert.py models/alpaca/pytorch_model.bin
+
+# Quantize the model to 4-bits (using method 2 = q4_0)
+./quantize models/alpaca/ggml-model-f16.bin models/alpaca/ggml-model-q4_0.bin 2 
+
+# Run instruction mode with Alpaca
+./main -m ./models/alpaca/ggml-model-q4_0.bin --color -f ./prompts/alpaca.txt -ins -b 256 --top_k 10000 --temp 0.2 --repeat_penalty 1 -t 7
+```
 
 ## Public Impact
 
