@@ -174,6 +174,9 @@ python3 inference.py --model-name-or-path <your_proj_path>/parrot-hint-7b \
     -o test/test_case.general-task.txt
 ```
 
+## Run LLMs on Mac
+
+
 
 ## Public Impact
 
