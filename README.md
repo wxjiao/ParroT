@@ -202,12 +202,11 @@ python3 convert.py models/alpaca/pytorch_model.bin
 ```
 
 Now you can talk to your own Chatbot!
-
+**Alpaca**
 <div align="center">
     <img width="80%" alt="alpaca" src="https://user-images.githubusercontent.com/31032829/230754675-c61156df-8321-4d21-bbf3-5ce74ef681df.png">
     <img width="80%" alt="alpaca" src="https://user-images.githubusercontent.com/31032829/230754701-19ecf2fa-6363-4253-92e3-4dc6f21f6480.png">
 </div>
-
 
 
 ## Public Impact
