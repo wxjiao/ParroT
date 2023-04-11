@@ -7,9 +7,16 @@
 
 # :parrot: ParroT: Translating During Chat Using Large Language Models
 
-:fire: **News** :fire:
+:fire: **Update**
+- The scripts for converting bilingual sentence pairs into Alpaca data format (`convert_pair_to_alpaca.py`) and the Alpaca data format to training data format  (`convert_alpaca_to_hf.py`) are uploaded.
+- You can use the current Transformers (`4.28.0.dev0`) directly as it merged the PR of LLaMA. With this version on CUDA 11.7, we find the finetuning process could be faster (~18%). 
+
+:star: **Highlight** :star:
 - :hugs: Try the pretrained models at HuggingFace model hub: [[Alpaca-7b]](https://huggingface.co/wxjiao/alpaca-7b), [[ParroT-7b]](https://huggingface.co/wxjiao/ParroT-7b), [[ParroT-Hint-7b]](https://huggingface.co/wxjiao/ParroT-Hint-7b)
 - :page_facing_up: The preprint is available now on arxiv, refer to it for more details: [[paper]](https://arxiv.org/abs/2304.02426) 
+
+
+## ParroT
 
 > Parrots are smart birds that can respond to simple commands or questions. The question is whether they're just mimicking, or really intelligent enough to communicate with humans. This is similar to what we currently speculate about LLMs.
 
@@ -69,10 +76,14 @@ git clone --branch llama_push  https://github.com/zphang/transformers.git
 cd transformers
 pip install -e .
 ```
+**Note**: Ignore this if you may use the latest version (`4.28.0.dev0`) directly.
+
 - Other requirements
 ```
 pip install -r requirements.txt
 ```
+
+
 
 
 ### Finetune
