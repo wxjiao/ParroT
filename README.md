@@ -9,7 +9,7 @@
 
 :fire: **Update**
 - The scripts for converting bilingual sentence pairs into Alpaca data format (`convert_pair_to_alpaca.py`) and the Alpaca data format to training data format  (`convert_alpaca_to_hf.py`) are uploaded.
-- You can use the current Transformers (`4.28.0.dev0`) directly as it merged the PR of LLaMA. With this version on CUDA 11.7, we find the finetuning process could be faster (~18%). 
+- You can use the latest Transformers (`4.28.0.dev0`) directly as it merged the PR of LLaMA. With this version on CUDA 11.7, we find the finetuning process could be a bit faster (~18%). 
 
 :star: **Highlight** :star:
 - :hugs: Try the pretrained models at HuggingFace model hub: [[Alpaca-7b]](https://huggingface.co/wxjiao/alpaca-7b), [[ParroT-7b]](https://huggingface.co/wxjiao/ParroT-7b), [[ParroT-Hint-7b]](https://huggingface.co/wxjiao/ParroT-Hint-7b)
@@ -67,7 +67,7 @@ We develop ParroT based on LLaMA with HuggingFace's transformers library by inst
 Framework Versions:
 - Python 3.8.12
 - Pytorch 1.10.0
-- Transformers 4.27.0.dev0
+- Transformers 4.27.0.dev0: Ignore this if you use the latest version (`4.28.0.dev0`) directly. But remember to include the finetuning script introduced below (`run_clm_llms.py`)
 ```
 # Clone the fork or use the transformers provided in this repo
 git clone --branch llama_push  https://github.com/zphang/transformers.git
@@ -76,7 +76,6 @@ git clone --branch llama_push  https://github.com/zphang/transformers.git
 cd transformers
 pip install -e .
 ```
-**Note**: Ignore this if you may use the latest version (`4.28.0.dev0`) directly.
 
 - Other requirements
 ```
