@@ -65,10 +65,12 @@ The inspection hasn’t found serious violation of laws and regulations. The mar
 
 We develop ParroT based on LLaMA with HuggingFace's transformers library by installing it from a particular fork (refer to this [PR](https://github.com/huggingface/transformers/pull/21955)). The hash of the specific commit we installed was `3884da12ce327667d4df5101aef3533cc32be61f`.
 
+However, the latest Transformers (`4.28.0.dev0`) has merged the PR of LLaMA, so you may use it directly and ignore the `4.27.0.dev0` fork below. But remember to include the finetuning script introduced later (`run_clm_llms.py`).
+
 Framework Versions:
 - Python 3.8.12
 - Pytorch 1.10.0
-- Transformers 4.27.0.dev0: Ignore this if you use the latest version (`4.28.0.dev0`) directly. But remember to include the finetuning script introduced below (`run_clm_llms.py`)
+- Transformers 4.27.0.dev0 
 ```
 # Clone the fork or use the transformers provided in this repo
 git clone --branch llama_push  https://github.com/zphang/transformers.git
