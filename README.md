@@ -9,7 +9,7 @@
 
 :fire: **Update**
 - The scripts for converting bilingual sentence pairs into Alpaca data format (`convert_pair_to_alpaca.py`) and the Alpaca data format to training data format  (`convert_alpaca_to_hf.py`) are uploaded.
-- You can use the latest Transformers (`4.28.0.dev0`) directly as it merged the PR of LLaMA. With this version on CUDA 11.7, we find the finetuning process could be a bit faster (~18%). 
+- You can use the latest Transformers (`4.28.0.dev0`) directly as it merged the PR of LLaMA. With this version on Torch 1.13.1 + CUDA 11.7, we find the finetuning process could be a bit faster (~18%). 
 
 :star: **Highlight** :star:
 - :hugs: Try the pretrained models at HuggingFace model hub: [[Alpaca-7b]](https://huggingface.co/wxjiao/alpaca-7b), [[ParroT-7b]](https://huggingface.co/wxjiao/ParroT-7b), [[ParroT-Hint-7b]](https://huggingface.co/wxjiao/ParroT-Hint-7b)
