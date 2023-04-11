@@ -96,7 +96,7 @@ python3 scripts/convert_pair_to_alpaca.py \
     -of data/train_alp.json
 ```
 
-Convert the Alpaca data format to the training data format herer:
+Convert the Alpaca data format to the training data format here:
 ```
 python3 scripts/convert_alpaca_to_hf.py \
     -i data/train_alp.json \
