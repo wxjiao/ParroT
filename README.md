@@ -60,6 +60,7 @@ The inspection hasn’t found serious violation of laws and regulations. The mar
 </div>
 --->
 
+
 ### Environment
 
 We develop ParroT based on LLaMA with HuggingFace's transformers library by installing it from a particular fork (refer to this [PR](https://github.com/huggingface/transformers/pull/21955)). The hash of the specific commit we installed was `3884da12ce327667d4df5101aef3533cc32be61f`.
@@ -83,6 +84,24 @@ pip install -r requirements.txt
 ```
 
 
+### Data Format Conversion
+
+Convert the regular bilingual sentence pairs into Alpaca data format:
+```
+python3 scripts/convert_pair_to_alpaca.py \
+    -s zh -t en \
+    -if scripts/instruct_follow.txt \
+    -sf data/train.zh-en.zh.txt \
+    -tf data/train.zh-en.en.txt \
+    -of data/train_alp.json
+```
+
+Convert the Alpaca data format to the training data format herer:
+```
+python3 scripts/convert_alpaca_to_hf.py \
+    -i data/train_alp.json \
+    -o data/train_alp_hf.json
+```
 
 
 ### Finetune
