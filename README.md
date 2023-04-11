@@ -174,6 +174,22 @@ python3 inference.py --model-name-or-path <your_proj_path>/parrot-hint-7b \
     -o test/test_case.general-task.txt
 ```
 
+
+### Finetuned LLMs and Results
+
+Currently, we finetuned the following LLMs for ParroT with the evaluation mainly on WMT22 test sets.
+
+- [x] LLaMA-7b
+- [x] Bloomz-mt-7b
+
+
+<div align="center">
+    <img width="70%" alt="alpaca" src="https://user-images.githubusercontent.com/31032829/231058559-9cd66740-1d86-4d77-b8d6-c7b4a5837684.png">
+    <p class="image-caption">Caption: Translation performance of LLMs on Flores subsets and WMT22 test sets.</p>
+</div>
+
+
+
 ## Run LLMs on your MacBook
 
 Try [llama.cpp](https://github.com/ggerganov/llama.cpp) to run the LLMs using 4-bit quantization on a MacBook.
