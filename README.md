@@ -8,6 +8,7 @@
 # :parrot: ParroT: Translating During Chat Using Large Language Models
 
 :fire: **Update**
+- ParroT-LoRA is under testing and will be released soon. 
 - The scripts for converting bilingual sentence pairs into Alpaca data format (`convert_pair_to_alpaca.py`) and the Alpaca data format to training data format  (`convert_alpaca_to_hf.py`) are uploaded.
 - You can use the latest Transformers (`4.28.0.dev0`) directly as it merged the PR of LLaMA. With this version on Torch 1.13.1 + CUDA 11.7, we find the finetuning process could be a bit faster (~18%). 
 
