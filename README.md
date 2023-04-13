@@ -212,6 +212,7 @@ Currently, we finetuned the following LLMs for ParroT with the evaluation mainly
 
 - [x] LLaMA-7b
 - [x] Bloomz-mt-7b
+- [ ] LLMs-LoRA
 
 
 <div align="center">
