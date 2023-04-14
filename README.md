@@ -92,7 +92,7 @@ python3 scripts/convert_alpaca_to_hf.py \
 
 ### Finetune
 We modify the example script of language modeling in transformers for finetuning, i.e., `run_clm.py` with the built in HuggingFace `Trainer`.
-We did not change any arguments so it would be easy to get started if you are familiar with `run_clm.py`. Also, this script supports data streaming, which might be helpful for handling larger datasets.
+So it would be easy to get started if you are familiar with `run_clm.py`. Also, this script supports data streaming, which might be helpful for handling larger datasets.
 [DeepSpeed ZeRO stage 3](https://github.com/microsoft/DeepSpeed) is adopted for model parallel.
 
 LLaMA-7b:
@@ -270,7 +270,7 @@ python3 inference_lora.py --model-name-or-path <your_proj_path>/llama-7b \
     -o test/test_rand_50.zh-en.none-hint.txt
     
 # Text generation
-python3 inference.py --model-name-or-path <your_proj_path>/llama-7b \
+python3 inference_lora.py --model-name-or-path <your_proj_path>/llama-7b \
     --lora-weights <your_proj_path>/parrot-hint-lora-7b/adapter_model \
     -t 0.7 \
     -sa 'sample' \
@@ -279,6 +279,9 @@ python3 inference.py --model-name-or-path <your_proj_path>/llama-7b \
 ```
 
 </details>
+
+
+**Note**: Theoretically, the `run_clm_lora.py` and `inference_lora.py` scripts can handle both full model and LoRA by specifying the arguments. But we also keep separate scripts (i.e., `run_clm_llms.py` and `inference.py`) for full model in consideration of safe development.
 
 
 ### Finetuned LLMs and Results
