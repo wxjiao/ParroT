@@ -8,8 +8,8 @@
 # :parrot: ParroT: Translating During Chat Using Large Language Models
 
 :fire: **Update**
-- Introducing ParroT-LoRA.
-- Set to use Transformers >=`4.28.0.dev0` directly as it merged the PR of LLaMA. With this version on Torch 1.13.1 + CUDA 11.7, we find the finetuning process could be a bit faster (~18%). 
+- Introducing ParroT-LoRA which supports saving and restarting from the checkpoints (base model and lora weights) in the middle of finetuning.
+- Setting the default Transformers to `>= 4.28.0.dev0` directly as it merged the PR of LLaMA. With this version on Torch 1.13.1 + CUDA 11.7, we find the finetuning process could be a bit faster (~18%) than our `v1.0.0` implementation. 
 
 :star: **Highlight** :star:
 - :hugs: Try the pretrained models at HuggingFace model hub: [[Alpaca-7b]](https://huggingface.co/wxjiao/alpaca-7b), [[ParroT-7b]](https://huggingface.co/wxjiao/ParroT-7b), [[ParroT-Hint-7b]](https://huggingface.co/wxjiao/ParroT-Hint-7b)
@@ -196,7 +196,8 @@ Currently, we finetuned the following LLMs for ParroT with the evaluation mainly
 
 - [x] LLaMA-7b
 - [x] Bloomz-mt-7b
-- [ ] LLMs-LoRA
+- [x] ParroT-LoRA
+- [ ] 8bit Training
 
 
 <div align="center">
