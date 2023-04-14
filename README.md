@@ -57,7 +57,7 @@ The inspection hasn’t found serious violation of laws and regulations. The mar
 
 ### Environment
 
-We develop ParroT based on LLaMA with HuggingFace's transformers library.
+We develop ParroT based on open-sourced LLMs (e.g., LLaMA, Bloomz) with HuggingFace's transformers library.
 
 Framework Versions:
 - Python 3.8.12
@@ -229,7 +229,11 @@ Simply switch the inference instruction for different strategies.
 - Preferred: instruct_inf_t2t.txt 
     - `Translate the following sentences from [SRC] to [TGT].###We prefer to translate it to`
 
-Example usage:
+Example usages:
+
+<details>
+<summary><b> Full Model </b></summary>
+
 ```
 # Translation
 python3 inference.py --model-name-or-path <your_proj_path>/parrot-hint-7b \
@@ -247,6 +251,34 @@ python3 inference.py --model-name-or-path <your_proj_path>/parrot-hint-7b \
     -i test/test_case.txt \
     -o test/test_case.general-task.txt
 ```
+
+</details>
+
+
+<details>
+<summary><b> LoRA </b></summary>
+
+```
+# Translation
+python3 inference_lora.py --model-name-or-path <your_proj_path>/llama-7b \
+    --lora-weights <your_proj_path>/parrot-hint-lora-7b/adapter_model \
+    -lp 'zh-en' \
+    -t 0.1 \
+    -sa 'beam' \
+    -ins test/instruct_inf.txt \
+    -i test/test_rand_50.zh.txt \
+    -o test/test_rand_50.zh-en.none-hint.txt
+    
+# Text generation
+python3 inference.py --model-name-or-path <your_proj_path>/llama-7b \
+    --lora-weights <your_proj_path>/parrot-hint-lora-7b/adapter_model \
+    -t 0.7 \
+    -sa 'sample' \
+    -i test/test_case.txt \
+    -o test/test_case.general-task.txt
+```
+
+</details>
 
 
 ### Finetuned LLMs and Results
