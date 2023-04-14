@@ -63,7 +63,7 @@ Framework Versions:
 - Python 3.8.12
 - Pytorch 1.13.1+cu117
 - Transformers 4.28.0.dev0 
-- Peft
+- Peft 0.2.0
 - Other requirements
 ```
 pip install -r requirements.txt
