@@ -296,8 +296,8 @@ Currently, we finetuned the following LLMs for ParroT with the evaluation mainly
 - [ ] 8bit Training (high requirements for both environments and GPU types)
 
 There are several interesting observations:
-- ParroT based on Bloomz-mt-7b also works well with hints.
-- LoRA seems to prevent LLMs from overfitting which benefits the high-resource De-En translation but restricts the instruction learning of other directions. The limited trainable parameters may explain this observation.
+- ParroT based on Bloomz-mt-7b also works well with hints. Besides, Bloomz-mt-7b shows stronger ability in the modeling of Chinese texts.
+- LoRA seems to prevent LLMs from overfitting which benefits the high-resource De-En translation but restricts the instruction learning of other directions. The limited trainable parameters (only ~4.6M) may explain this observation.
 
 <div align="center">
     <img width="70%" alt="alpaca" src="https://user-images.githubusercontent.com/31032829/231996281-40811fdf-e0ef-4029-8966-a7efaee7e508.png">
