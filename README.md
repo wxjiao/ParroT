@@ -8,7 +8,7 @@
 # :parrot: ParroT: Translating During Chat Using Large Language Models
 
 :fire: **Update**
-- Introducing ParroT-LoRA which supports saving and restarting from the checkpoints (base model and lora weights) in the middle of finetuning.
+- Introducing ParroT-LoRA which supports saving and restarting from the checkpoints (base model and lora weights) during finetuning.
 - Setting the default Transformers to `>= 4.28.0.dev0` directly as it merged the PR of LLaMA. With this version on Torch 1.13.1 + CUDA 11.7, we find the finetuning process could be a bit faster (~18%) than our [v1.0.0](https://github.com/wxjiao/ParroT/tree/v1.0.0/transformers/examples/pytorch/language-modeling) implementation. 
 
 :star: **Highlight** :star:
@@ -100,6 +100,10 @@ LLaMA-7b:
 - Convert the LLaMA weights into the HuggingFace format by following the instructions in this [Doc](https://huggingface.co/docs/transformers/main/model_doc/llama)
 
 Example usage on 8 V100 by 1 node:
+
+<details>
+<summary>Full Model</summary>
+
 ```
 # Multi-nodes are also supported
 
@@ -148,10 +152,8 @@ torchrun --nnodes $HOST_NUM --node_rank $INDEX --nproc_per_node 8 \
     --gradient_checkpointing True \
     --output_dir ${model_save}
 ```
+</details>
 
-<!---
-Note: You may try `--gradient_checkpointing True` to reduce memory burden and increase `--per_device_train_batch_size` to speedup the finetuning process.
---->
 
 ### Inference (`inference.py`)
 
