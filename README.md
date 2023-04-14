@@ -215,9 +215,9 @@ torchrun --nnodes $HOST_NUM --node_rank $INDEX --nproc_per_node 8 \
 </details>
 
 
-### Inference (`inference.py`)
+### Inference
 
-The script supports generation with and without hints using different instructions. 
+The scripts support generation with and without hints using different instructions. 
 The hints are appended to the default instruction with `###` as a delimiter.
 Simply switch the inference instruction for different strategies. 
 
@@ -296,8 +296,8 @@ Currently, we finetuned the following LLMs for ParroT with the evaluation mainly
 - [ ] 8bit Training (high requirements for both environments and GPU types)
 
 There are several interesting observations:
-- xxx
-- xxx
+- ParroT based on Bloomz-mt-7b also works well with hints.
+- LoRA seems to prevent LLMs from overfitting which benefits the high-resource De-En translation but restricts the instruction learning of other directions. The limited trainable parameters may explain this observation.
 
 <div align="center">
     <img width="70%" alt="alpaca" src="https://user-images.githubusercontent.com/31032829/231996281-40811fdf-e0ef-4029-8966-a7efaee7e508.png">
