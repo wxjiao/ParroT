@@ -92,8 +92,11 @@ python3 scripts/convert_alpaca_to_hf.py \
 
 ### Finetune
 We modify the example script of language modeling in transformers for finetuning, i.e., `run_clm.py` with the built in HuggingFace `Trainer`.
-So it would be easy to get started if you are familiar with `run_clm.py`. Also, this script supports data streaming, which might be helpful for handling larger datasets.
-[DeepSpeed ZeRO stage 3](https://github.com/microsoft/DeepSpeed) is adopted for model parallel.
+So it would be easy to get started if you are familiar with `run_clm.py`. Also, this script supports data streaming, which might be helpful for handling larger datasets. [DeepSpeed ZeRO stage 3](https://github.com/microsoft/DeepSpeed) is adopted for model parallel.
+
+The resulting finetuning scripts are named as `run_clm_llms.py` and `run_clm_lora.py` for full model training and LoRA training, respectively.
+Theoretically, the `run_clm_lora.py` script can handle both full model and LoRA by specifying the arguments. But we also keep the former one for full model in consideration of safe development.
+
 
 LLaMA-7b:
 - Original weights for the LLaMA models can be obtained by filling out this [Form](https://docs.google.com/forms/d/e/1FAIpQLSfqNECQnMkycAp2jP4Z9TFX0cGR4uf7b_fBxjY_OjhJILlKGA/viewform)
@@ -281,7 +284,6 @@ python3 inference_lora.py --model-name-or-path <your_proj_path>/llama-7b \
 </details>
 
 
-**Note**: Theoretically, the `run_clm_lora.py` and `inference_lora.py` scripts can handle both full model and LoRA by specifying the arguments. But we also keep separate scripts (i.e., `run_clm_llms.py` and `inference.py`) for full model in consideration of safe development.
 
 
 ### Finetuned LLMs and Results
@@ -291,11 +293,14 @@ Currently, we finetuned the following LLMs for ParroT with the evaluation mainly
 - [x] LLaMA-7b
 - [x] Bloomz-mt-7b
 - [x] ParroT-LoRA
-- [ ] 8bit Training
+- [ ] 8bit Training (high requirements for both environments and GPU types)
 
+There are several interesting observations:
+- xxx
+- xxx
 
 <div align="center">
-    <img width="70%" alt="alpaca" src="https://user-images.githubusercontent.com/31032829/231058559-9cd66740-1d86-4d77-b8d6-c7b4a5837684.png">
+    <img width="70%" alt="alpaca" src="https://user-images.githubusercontent.com/31032829/231996281-40811fdf-e0ef-4029-8966-a7efaee7e508.png">
     <p class="image-caption">Caption: Translation performance of LLMs on Flores subsets and WMT22 test sets.</p>
 </div>
 
