@@ -105,7 +105,7 @@ Example usages on 8 V100 by 1 node:
 <summary><b> Full Model </b></summary>
 
 ```
-# Multi-nodes are also supported
+\# Multi-nodes are also supported
 
 export NCCL_DEBUG=INFO
 export NCCL_SOCKET_IFNAME=eth1
@@ -120,7 +120,7 @@ train_path=transformers/examples/pytorch/language-modeling/run_clm_llms.py
 model_path=<your_proj_path>/llama-7b
 model_save=<your_proj_path>/parrot-hint-7b
 
-# HOST_NUM will be 1
+\# HOST_NUM will be 1
 torchrun --nnodes $HOST_NUM --node_rank $INDEX --nproc_per_node 8 \
     --master_addr $MASTER_ADDR --master_port $MASTER_PORT  \
     ${train_path} \
@@ -155,9 +155,6 @@ torchrun --nnodes $HOST_NUM --node_rank $INDEX --nproc_per_node 8 \
 </details>
 
 
-
-<details>
-<summary><b> LoRA </b></summary>
 ```
 # Multi-nodes are also supported
 
@@ -208,7 +205,6 @@ torchrun --nnodes $HOST_NUM --node_rank $INDEX --nproc_per_node 8 \
     --gradient_checkpointing True \
     --output_dir ${model_save}
 ```
-</details>
 
 
 ### Inference (`inference.py`)
