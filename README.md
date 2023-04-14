@@ -238,22 +238,24 @@ python3 convert.py models/alpaca/pytorch_model.bin
 
 Now you can talk to your own Chatbot!
 
-**Alpaca-7b**
-
+<details>
+<summary><b>Alpaca-7b</b> </summary>
 <div align="center">
     <img width="80%" alt="alpaca" src="https://user-images.githubusercontent.com/31032829/230761319-7efa4029-2512-4a8d-b39e-e8a9c263abe5.png">
     <img width="80%" alt="alpaca" src="https://user-images.githubusercontent.com/31032829/230761136-9b126539-af63-48b5-9333-4508e80a5fc3.png">
     <p class="image-caption">Caption: Alpaca cannot respond to the hints.</p>
 </div>
+</details>
+    
 
-**ParroT-Hint-7b**
-
+<details>
+<summary><b>ParroT-Hint-7b</b> </summary>
 <div align="center">
     <img width="80%" alt="alpaca" src="https://user-images.githubusercontent.com/31032829/230761459-e0af3d2c-8ce5-446b-8387-a6e66c5c1d62.png">
     <img width="80%" alt="alpaca" src="https://user-images.githubusercontent.com/31032829/230760669-8a05e052-76e6-4123-9992-869cd8c83d83.png">
     <p class="image-caption">Caption: ParroT responds to the hints as expected.</p>
 </div>
-
+</details>
 
 
 ## Public Impact
