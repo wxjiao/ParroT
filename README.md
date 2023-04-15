@@ -1,9 +1,9 @@
 
-<!---
 <div align="center">
-    <img width="20%" alt="alpaca" src="https://user-images.githubusercontent.com/31032829/227085934-f4e7f99f-8b98-4c96-a091-e0f8743b6fb5.png">
+    <img width="20%" alt="alpaca" src="https://user-images.githubusercontent.com/31032829/232227934-85eaf444-f5e6-4b25-ac05-926ff883c8ad.png">
 </div>
---->
+
+
 
 # :parrot: ParroT: Translating During Chat Using Large Language Models
 
