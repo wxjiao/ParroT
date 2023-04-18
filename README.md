@@ -62,8 +62,8 @@ We develop ParroT based on open-sourced LLMs (e.g., LLaMA, Bloomz) with HuggingF
 Framework Versions:
 - Python 3.8.12
 - Pytorch 1.13.1+cu117
-- Transformers 4.28.0.dev0 
-- Peft 0.2.0
+- Transformers (git+https://github.com/huggingface/transformers.git) 
+- Peft (git+https://github.com/huggingface/peft.git)
 - Other requirements
 ```
 pip install -r requirements.txt
