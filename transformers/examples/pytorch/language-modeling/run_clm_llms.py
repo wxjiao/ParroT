@@ -535,7 +535,7 @@ def main():
                 labels = copy.deepcopy(text_tokenized["input_ids"])
                 prefix_lengths = [torch.tensor(p).ne(tokenizer.pad_token_id).sum().item() for p in prefix_tokenized["input_ids"]]
                 for label, prefix_len in zip(labels, prefix_lengths):       # Do not compute loss for prompt inputs
-                    label[:prefix_len] = [IGNORE_INDEX for i in range(prefix_len)]
+                    label[:prefix_len] = [IGNORE_INDEX] * prefix_len   # [IGNORE_INDEX for i in range(prefix_len)]
             else:
                 text_tokenized = tokenizer(text, max_length=block_size, padding=padding, truncation=True)
                 labels = copy.deepcopy(text_tokenized["input_ids"])
