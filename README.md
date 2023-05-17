@@ -8,7 +8,7 @@
 # :parrot: ParroT: Translating During Chat Using Large Language Models
 
 :fire: **Update**
-- Important optimizations: `preprocess_function` to be 4~5X faster; `DataCollatorForSeq2Seq` for batch-wise padding to save  5~10% GPU memory.
+- Important optimizations: `preprocess_function` to be 4-5X faster; `DataCollatorForSeq2Seq` for batch-wise padding to save  5-10% GPU memory.
 - Introducing ParroT-LoRA which supports saving and restarting from the checkpoints (base model and lora weights) during finetuning.
 - Setting the default Transformers to `>= 4.28.0.dev0` directly as it merged the PR of LLaMA. With this version on Torch 1.13.1 + CUDA 11.7, we find the finetuning process could be a bit faster (~18%) than our [v1.0.0](https://github.com/wxjiao/ParroT/tree/v1.0.0/transformers/examples/pytorch/language-modeling) implementation. 
 
