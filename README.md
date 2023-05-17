@@ -94,7 +94,7 @@ python3 scripts/convert_alpaca_to_hf.py \
 
 ### Finetune
 We modify the example script of language modeling in transformers for finetuning, i.e., `run_clm.py` with the built in HuggingFace `Trainer`.
-So it would be easy to get started if you are familiar with `run_clm.py`. Also, this script supports data streaming, which might be helpful for handling larger datasets. [DeepSpeed ZeRO stage 3](https://github.com/microsoft/DeepSpeed) is adopted for model parallel.
+So it would be easy to get started if you are familiar with `run_clm.py`. Also, this script supports data streaming, which might be helpful for handling larger datasets. [DeepSpeed ZeRO stage 2/3](https://github.com/microsoft/DeepSpeed) is adopted for model parallel.
 
 The resulting finetuning scripts are named as `run_clm_llms.py` and `run_clm_lora.py` for full model training and LoRA training, respectively.
 Theoretically, the `run_clm_lora.py` script can handle both full model and LoRA by specifying the arguments. But we also keep the former one for full model in consideration of safe development.
