@@ -8,7 +8,7 @@
 # :parrot: ParroT: Translating During Chat Using Large Language Models
 
 :fire: **Update**
-- For 7B models, ZeRO2+offload runs slightly faster than ZeRO3+offload and saves at least 10% GPU usage. 
+- For medium-to-small models (e.g., 7B), we recommend ZeRO2+offload rather than ZerO3; use gradient accumulation to maximize GPU usage.
 - Important optimizations: `preprocess_function` to be 4-5X faster; `DataCollatorForSeq2Seq` for batch-wise padding to save  5-10% GPU usage.
 - Introducing ParroT-LoRA which supports saving and restarting from the checkpoints (base model and lora weights) during finetuning.
 - Setting the default Transformers to `>= 4.28.0.dev0` directly as it merged the PR of LLaMA. With this version on Torch 1.13.1 + CUDA 11.7, we find the finetuning process could be a bit faster (~18%) than our [v1.0.0](https://github.com/wxjiao/ParroT/tree/v1.0.0/transformers/examples/pytorch/language-modeling) implementation. 
@@ -24,7 +24,7 @@
 
 > Promoting the good is essential, but punishing the evil is also necessary to ensure that goodness prevails. Similarly, aligning LLMs with human feedbacks is exactly to learn from correct examples and discriminate erroneous examples.
 
-Large language models (LLMs) like ChatGPT and GPT-4 have exhibited remarkable abilities on a wide range of natural language processing (NLP) tasks, including various machine translation abilities accomplished during chat. However, these models are only accessible through restricted APIs, which creates barriers to new research and advancements in the field. Therefore, we propose the **ParroT** framework to enhance and regulate the translation abilities during chat based on open-sourced LLMs (e.g., [LLaMA](https://github.com/facebookresearch/llama)) and human written translation and evaluation data. Specifically, ParroT reformulates translation data into the instruction-following style, and introduces a “Hint” field for incorporating extra requirements to regulate the translation process.
+Large language models (LLMs) like ChatGPT and GPT-4 have exhibited remarkable abilities on a wide range of natural language processing (NLP) tasks, including various machine translation abilities accomplished during chat. However, these models are only accessible through restricted APIs, which creates barriers to new research and advancements in the field. Therefore, we propose the **ParroT** framework to enhance and regulate the translation abilities during chat based on open-sourced LLMs (e.g., [LLaMA](https://github.com/facebookresearch/llama), [Bloomz](https://huggingface.co/bigscience/bloomz)) and human written translation and evaluation data. Specifically, ParroT reformulates translation data into the instruction-following style, and introduces a “Hint” field for incorporating extra requirements to regulate the translation process.
 
 <div align="center">
     <img width="60%" alt="LLMs-MT" src="https://user-images.githubusercontent.com/31032829/230255125-bcf7393c-fd3c-4210-a3c6-60dc86a9721d.png">
