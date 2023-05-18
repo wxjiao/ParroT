@@ -169,7 +169,7 @@ torchrun --nnodes $HOST_NUM --node_rank $INDEX --nproc_per_node 8 \
 
 
 <details>
-<summary><b> LoRA </b>(WARNING: Model saving may fail when the adapter becomes large)</summary>
+<summary><b> LoRA </b></summary>
     
 ```
 # Multi-nodes are also supported
