@@ -94,17 +94,22 @@ python3 scripts/convert_alpaca_to_hf.py \
 
 ### Finetune
 We modify the example script of language modeling in transformers for finetuning, i.e., `run_clm.py` with the built in HuggingFace `Trainer`.
-So it would be easy to get started if you are familiar with `run_clm.py`. Also, this script supports data streaming, which might be helpful for handling larger datasets. [DeepSpeed ZeRO stage 2/3](https://github.com/microsoft/DeepSpeed) is adopted for model parallel.
+So it would be easy to get started if you are familiar with `run_clm.py`. Also, this script supports data streaming, which might be helpful for handling larger datasets. [DeepSpeed ZeRO stage 2/3](https://github.com/microsoft/DeepSpeed) is adopted for distributed training.
 
 The resulting finetuning scripts are named as `run_clm_llms.py` and `run_clm_lora.py` for full model training and LoRA training, respectively.
 Theoretically, the `run_clm_lora.py` script can handle both full model and LoRA by specifying the arguments. But we also keep the former one for full model in consideration of safe development.
+
+**For LoRA training, we recommend to use ZeRO2 since ZeRO3 is very unstable when saving `adapter_model.bin`.**
 
 
 LLaMA-7b:
 - Original weights for the LLaMA models can be obtained by filling out this [Form](https://docs.google.com/forms/d/e/1FAIpQLSfqNECQnMkycAp2jP4Z9TFX0cGR4uf7b_fBxjY_OjhJILlKGA/viewform)
 - Convert the LLaMA weights into the HuggingFace format by following the instructions in this [Doc](https://huggingface.co/docs/transformers/main/model_doc/llama)
 
-Example usages on 8 V100 by 1 node:
+Bloomz-7b1-mt:
+- Available on HuggingFace: [Bloomz-7b1-mt](https://huggingface.co/bigscience/bloomz-7b1-mt)
+
+Example usages on 8 A100 by 1 node:
 
 <details>
 <summary><b> Full Model </b></summary>
@@ -135,9 +140,9 @@ torchrun --nnodes $HOST_NUM --node_rank $INDEX --nproc_per_node 8 \
     --preprocessing_num_workers 16 \
     --dataloader_num_workers 8 \
     --dataloader_pin_memory True \
-    --per_device_train_batch_size 4 \
-    --per_device_eval_batch_size 4 \
-    --gradient_accumulation_steps 4 \
+    --per_device_train_batch_size 16 \
+    --per_device_eval_batch_size 2 \
+    --gradient_accumulation_steps 1 \
     --num_train_epochs 1.5 \
     --save_strategy "steps" \
     --save_steps 500 \
@@ -185,7 +190,7 @@ model_save=<your_proj_path>/parrot-hint-lora-7b
 torchrun --nnodes $HOST_NUM --node_rank $INDEX --nproc_per_node 8 \
     --master_addr $MASTER_ADDR --master_port $MASTER_PORT  \
     ${train_path} \
-    --deepspeed train/deepspeed_config.json \
+    --deepspeed train/deepspeed_config_zero2.json \
     --model_name_or_path ${model_path} \
     --train_file data/data_parrot_hf.json \
     --use_lora True \
@@ -193,9 +198,9 @@ torchrun --nnodes $HOST_NUM --node_rank $INDEX --nproc_per_node 8 \
     --preprocessing_num_workers 16 \
     --dataloader_num_workers 8 \
     --dataloader_pin_memory True \
-    --per_device_train_batch_size 4 \
-    --per_device_eval_batch_size 4 \
-    --gradient_accumulation_steps 4 \
+    --per_device_train_batch_size 16 \
+    --per_device_eval_batch_size 2 \
+    --gradient_accumulation_steps 1 \
     --num_train_epochs 1.5 \
     --save_strategy "steps" \
     --save_steps 500 \
