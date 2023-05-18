@@ -8,7 +8,8 @@
 # :parrot: ParroT: Translating During Chat Using Large Language Models
 
 :fire: **Update**
-- For 7B models, ZeRO2+offload runs slightly faster than ZeRO3+offload and saves at least 10% GPU usage. 
+- The WMT22 test sets are made available.
+- For medium-to-small models (e.g., 7B), we recommend ZeRO2+offload rather than ZerO3; use gradient accumulation to maximize GPU usage.
 - Important optimizations: `preprocess_function` to be 4-5X faster; `DataCollatorForSeq2Seq` for batch-wise padding to save  5-10% GPU usage.
 - Introducing ParroT-LoRA which supports saving and restarting from the checkpoints (base model and lora weights) during finetuning.
 - Setting the default Transformers to `>= 4.28.0.dev0` directly as it merged the PR of LLaMA. With this version on Torch 1.13.1 + CUDA 11.7, we find the finetuning process could be a bit faster (~18%) than our [v1.0.0](https://github.com/wxjiao/ParroT/tree/v1.0.0/transformers/examples/pytorch/language-modeling) implementation. 
@@ -24,7 +25,7 @@
 
 > Promoting the good is essential, but punishing the evil is also necessary to ensure that goodness prevails. Similarly, aligning LLMs with human feedbacks is exactly to learn from correct examples and discriminate erroneous examples.
 
-Large language models (LLMs) like ChatGPT and GPT-4 have exhibited remarkable abilities on a wide range of natural language processing (NLP) tasks, including various machine translation abilities accomplished during chat. However, these models are only accessible through restricted APIs, which creates barriers to new research and advancements in the field. Therefore, we propose the **ParroT** framework to enhance and regulate the translation abilities during chat based on open-sourced LLMs (e.g., [LLaMA](https://github.com/facebookresearch/llama)) and human written translation and evaluation data. Specifically, ParroT reformulates translation data into the instruction-following style, and introduces a “Hint” field for incorporating extra requirements to regulate the translation process.
+Large language models (LLMs) like ChatGPT and GPT-4 have exhibited remarkable abilities on a wide range of natural language processing (NLP) tasks, including various machine translation abilities accomplished during chat. However, these models are only accessible through restricted APIs, which creates barriers to new research and advancements in the field. Therefore, we propose the **ParroT** framework to enhance and regulate the translation abilities during chat based on open-sourced LLMs (e.g., [LLaMA](https://github.com/facebookresearch/llama), [Bloomz](https://huggingface.co/bigscience/bloomz)) and human written translation and evaluation data. Specifically, ParroT reformulates translation data into the instruction-following style, and introduces a “Hint” field for incorporating extra requirements to regulate the translation process.
 
 <div align="center">
     <img width="60%" alt="LLMs-MT" src="https://user-images.githubusercontent.com/31032829/230255125-bcf7393c-fd3c-4210-a3c6-60dc86a9721d.png">
@@ -94,17 +95,22 @@ python3 scripts/convert_alpaca_to_hf.py \
 
 ### Finetune
 We modify the example script of language modeling in transformers for finetuning, i.e., `run_clm.py` with the built in HuggingFace `Trainer`.
-So it would be easy to get started if you are familiar with `run_clm.py`. Also, this script supports data streaming, which might be helpful for handling larger datasets. [DeepSpeed ZeRO stage 2/3](https://github.com/microsoft/DeepSpeed) is adopted for model parallel.
+So it would be easy to get started if you are familiar with `run_clm.py`. Also, this script supports data streaming, which might be helpful for handling larger datasets. [DeepSpeed ZeRO stage 2/3](https://github.com/microsoft/DeepSpeed) is adopted for distributed training.
 
 The resulting finetuning scripts are named as `run_clm_llms.py` and `run_clm_lora.py` for full model training and LoRA training, respectively.
 Theoretically, the `run_clm_lora.py` script can handle both full model and LoRA by specifying the arguments. But we also keep the former one for full model in consideration of safe development.
+
+**For LoRA training, we recommend to use ZeRO2 since ZeRO3 is very unstable when saving `adapter_model.bin`.**
 
 
 LLaMA-7b:
 - Original weights for the LLaMA models can be obtained by filling out this [Form](https://docs.google.com/forms/d/e/1FAIpQLSfqNECQnMkycAp2jP4Z9TFX0cGR4uf7b_fBxjY_OjhJILlKGA/viewform)
 - Convert the LLaMA weights into the HuggingFace format by following the instructions in this [Doc](https://huggingface.co/docs/transformers/main/model_doc/llama)
 
-Example usages on 8 V100 by 1 node:
+Bloomz-7b1-mt:
+- Available on HuggingFace: [Bloomz-7b1-mt](https://huggingface.co/bigscience/bloomz-7b1-mt)
+
+Example usages on 8 A100 by 1 node:
 
 <details>
 <summary><b> Full Model </b></summary>
@@ -135,9 +141,9 @@ torchrun --nnodes $HOST_NUM --node_rank $INDEX --nproc_per_node 8 \
     --preprocessing_num_workers 16 \
     --dataloader_num_workers 8 \
     --dataloader_pin_memory True \
-    --per_device_train_batch_size 4 \
-    --per_device_eval_batch_size 4 \
-    --gradient_accumulation_steps 4 \
+    --per_device_train_batch_size 16 \
+    --per_device_eval_batch_size 2 \
+    --gradient_accumulation_steps 1 \
     --num_train_epochs 1.5 \
     --save_strategy "steps" \
     --save_steps 500 \
@@ -163,7 +169,7 @@ torchrun --nnodes $HOST_NUM --node_rank $INDEX --nproc_per_node 8 \
 
 
 <details>
-<summary><b> LoRA </b>(WARNING: Model saving may fail when the adapter becomes large)</summary>
+<summary><b> LoRA </b></summary>
     
 ```
 # Multi-nodes are also supported
@@ -185,7 +191,7 @@ model_save=<your_proj_path>/parrot-hint-lora-7b
 torchrun --nnodes $HOST_NUM --node_rank $INDEX --nproc_per_node 8 \
     --master_addr $MASTER_ADDR --master_port $MASTER_PORT  \
     ${train_path} \
-    --deepspeed train/deepspeed_config.json \
+    --deepspeed train/deepspeed_config_zero2.json \
     --model_name_or_path ${model_path} \
     --train_file data/data_parrot_hf.json \
     --use_lora True \
@@ -193,9 +199,9 @@ torchrun --nnodes $HOST_NUM --node_rank $INDEX --nproc_per_node 8 \
     --preprocessing_num_workers 16 \
     --dataloader_num_workers 8 \
     --dataloader_pin_memory True \
-    --per_device_train_batch_size 4 \
-    --per_device_eval_batch_size 4 \
-    --gradient_accumulation_steps 4 \
+    --per_device_train_batch_size 16 \
+    --per_device_eval_batch_size 2 \
+    --gradient_accumulation_steps 1 \
     --num_train_epochs 1.5 \
     --save_strategy "steps" \
     --save_steps 500 \
@@ -366,6 +372,7 @@ Now you can talk to your own Chatbot!
 ### Acknowledgement
 This project cannot be developed without the following resources:
 - Meta AI `LLaMA`: https://github.com/facebookresearch/llama
+- BigScience `Bloomz`: https://huggingface.co/bigscience/bloom
 - HuggingFace developers on `LLaMA`: https://github.com/huggingface/transformers/pull/21955
 - Stanford `Alpaca`: https://github.com/tatsu-lab/stanford_alpaca
 - `llama.cpp` by [@ggerganov](https://github.com/ggerganov/llama.cpp) and [@comex](https://github.com/comex/llama.cpp)
