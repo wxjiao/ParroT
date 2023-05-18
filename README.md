@@ -38,6 +38,7 @@ Large language models (LLMs) like ChatGPT and GPT-4 have exhibited remarkable ab
 ### Datasets
 
 - Train Data: data_alpaca_hf.json, [data_parrot_hf.json](https://drive.google.com/file/d/1pQmj-eFwHycSkQtuAB3OKF47bHPxDVon/view?usp=share_link)
+    - You can also use [Alpaca data by GPT-4](https://github.com/Instruction-Tuning-with-GPT-4/GPT-4-LLM): alpaca_gpt4_hf_en.json/alpaca_gpt4_hf_zh.json 
 - Test Data: [Flores subsets](https://github.com/wxjiao/Is-ChatGPT-A-Good-Translator), [WMT22 test sets](https://www.statmt.org/wmt22/translation-task.html)
 - Instruction-following format:
 ```
