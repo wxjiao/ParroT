@@ -8,6 +8,7 @@
 # :parrot: ParroT: Translating During Chat Using Large Language Models
 
 :fire: **Update**
+- The WMT22 test sets are made available.
 - For medium-to-small models (e.g., 7B), we recommend ZeRO2+offload rather than ZerO3; use gradient accumulation to maximize GPU usage.
 - Important optimizations: `preprocess_function` to be 4-5X faster; `DataCollatorForSeq2Seq` for batch-wise padding to save  5-10% GPU usage.
 - Introducing ParroT-LoRA which supports saving and restarting from the checkpoints (base model and lora weights) during finetuning.
