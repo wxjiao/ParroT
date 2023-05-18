@@ -58,6 +58,7 @@ import json
 from transformers.utils import add_start_docstrings
 from transformers.trainer_utils import PREFIX_CHECKPOINT_DIR
 from transformers.trainer_callback import TrainerCallback
+from transformers import TrainingArguments, TrainerState, TrainerControl
 from peft import (
     prepare_model_for_int8_training,
     LoraConfig,
@@ -257,7 +258,13 @@ class LoRATrainingArguments(TrainingArguments):
 
 # xxx: save peft adapters at steps/epoch end
 class SavePeftModelCallback(TrainerCallback):
-    def on_save(self, args, state, control, **kwargs):
+    def on_save(
+            self,
+            args: TrainingArguments,
+            state: TrainerState,
+            control: TrainerControl,
+            **kwargs,
+    ):
         checkpoint_folder = os.path.join(
             args.output_dir, f"{PREFIX_CHECKPOINT_DIR}-{state.global_step}"
         )
@@ -273,7 +280,13 @@ class SavePeftModelCallback(TrainerCallback):
 
 # xxx: save peft at train end
 class SavePeftModelAtEndCallback(TrainerCallback):
-    def on_train_end(self, args, state, control, **kwargs):
+    def on_train_end(
+            self,
+            args: TrainingArguments,
+            state: TrainerState,
+            control: TrainerControl,
+            **kwargs,
+    ):
         peft_model_path = os.path.join(args.output_dir, "adapter_model")
         kwargs["model"].save_pretrained(peft_model_path)
 
@@ -580,34 +593,30 @@ def main():
     # xxx: 2023-03-14
     tok_logger = transformers.utils.logging.get_logger("transformers.tokenization_utils_base")
 
+    # xxx: 2023-05-17, leave padding to DataCollatorForSeq2Seq for batch padding and avoid unnecessary paddings
     def preprocess_function(examples):
         with CaptureLogger(tok_logger) as cl:
             # xxx: 2023-04-07; text: target, prefix: source
-            padding = "max_length"              # or False
-            text = examples[text_column_name]   # may have multiple strings
+            padding = "max_length"  # or False
+            text = examples[text_column_name]  # may have multiple strings
             if "prefix" in column_names:
-                prefix = examples["prefix"]     # may have multiple strings
-                text = [ s + t for s,t in zip(prefix, text)]
-                prefix_tokenized = tokenizer(prefix, max_length=block_size, padding=padding, truncation=True)
-                text_tokenized = tokenizer(text, max_length=block_size, padding=padding, truncation=True)
+                prefix = examples["prefix"]  # may have multiple strings
+                text = [s + t for s, t in zip(prefix, text)]
+                prefix_tokenized = tokenizer(prefix, truncation=True, max_length=block_size, padding=False)
+                text_tokenized = tokenizer(text, truncation=True, max_length=block_size, padding=False)
                 labels = copy.deepcopy(text_tokenized["input_ids"])
-                prefix_lengths = [torch.tensor(p).ne(tokenizer.pad_token_id).sum().item() for p in prefix_tokenized["input_ids"]]
-                for label, prefix_len in zip(labels, prefix_lengths):       # Do not compute loss for prompt inputs
-                    label[:prefix_len] = [IGNORE_INDEX for i in range(prefix_len)]
+                prefix_lengths = [len(p) for p in prefix_tokenized["input_ids"]]
+                for label, prefix_len in zip(labels, prefix_lengths):  # Do not compute loss for prompt inputs
+                    label[:prefix_len] = [IGNORE_INDEX] * prefix_len  # [IGNORE_INDEX for i in range(prefix_len)]
             else:
-                text_tokenized = tokenizer(text, max_length=block_size, padding=padding, truncation=True)
+                text_tokenized = tokenizer(text, truncation=True, max_length=block_size, padding=False)
                 labels = copy.deepcopy(text_tokenized["input_ids"])
-
-            if padding == "max_length":     # Ignore padding loss( CrossEntropyLoss ignores index -100)
-                labels = [
-                    [(l if l != tokenizer.pad_token_id else IGNORE_INDEX) for l in label] for label in labels
-                ]
             text_tokenized["labels"] = labels
         if "Token indices sequence length is longer than the" in cl.out:
             tok_logger.warning(
-                     "^^^^^^^^^^^^^^^^ Please ignore the warning above - this long input will be chunked into smaller bits"
-                     " before being passed to the model."
-                )
+                "^^^^^^^^^^^^^^^^ Please ignore the warning above - this long input will be chunked into smaller bits"
+                " before being passed to the model."
+            )
         return text_tokenized
 
     # Note that with `batched=True`, this map processes 1,000 texts together, so group_texts throws away a remainder
@@ -702,7 +711,9 @@ def main():
         eval_dataset=eval_dataset if training_args.do_eval else None,
         tokenizer=tokenizer,
         # Data collator will default to DataCollatorWithPadding, so we change it.
-        data_collator=default_data_collator,
+        #data_collator=default_data_collator,
+        data_collator=transformers.DataCollatorForSeq2Seq(tokenizer, pad_to_multiple_of=8, return_tensors="pt",
+                                                          padding=True, label_pad_token_id=IGNORE_INDEX),
         compute_metrics=compute_metrics if training_args.do_eval and not is_torch_tpu_available() else None,
         preprocess_logits_for_metrics=preprocess_logits_for_metrics
         if training_args.do_eval and not is_torch_tpu_available()
