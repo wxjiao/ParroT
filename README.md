@@ -1,7 +1,9 @@
 
+<!---
 <div align="center">
     <img width="25%" alt="alpaca" src="https://user-images.githubusercontent.com/31032829/232227934-85eaf444-f5e6-4b25-ac05-926ff883c8ad.png">
 </div>
+--->
 
 
 
