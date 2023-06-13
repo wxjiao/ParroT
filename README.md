@@ -2,13 +2,15 @@
 
 <div align="center">
     <img width="25%" alt="ParroT" src="https://github.com/wxjiao/ParroT/assets/31032829/9893aba1-7ea3-4c76-a995-9b12aff44950">
+    <h1>
+    ParroT: Translating During Chat Using Large Language Models
+    </h1>
 </div>
 
 <!---
 :parrot: 
---->
-
 # ParroT: Translating During Chat Using Large Language Models
+--->
 
 :fire: **Update**
 - The WMT22 test sets are made available.
