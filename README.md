@@ -13,11 +13,17 @@
 --->
 
 :fire: **Update**
+- [2023/06/14] Releasing detailed instruction data and scripts on [@InstructMT](https://github.com/wxjiao/InstructMT).
+
+<details>
+    
 - The WMT22 test sets are made available.
 - For medium-to-small models (e.g., 7B), we recommend ZeRO2+offload rather than ZerO3; use gradient accumulation to maximize GPU usage.
 - Important optimizations: `preprocess_function` to be 4-5X faster; `DataCollatorForSeq2Seq` for batch-wise padding to save  5-10% GPU usage.
 - Introducing ParroT-LoRA which supports saving and restarting from the checkpoints (base model and lora weights) during finetuning.
-- Setting the default Transformers to `>= 4.28.0.dev0` directly as it merged the PR of LLaMA. With this version on Torch 1.13.1 + CUDA 11.7, we find the finetuning process could be a bit faster (~18%) than our [v1.0.0](https://github.com/wxjiao/ParroT/tree/v1.0.0/transformers/examples/pytorch/language-modeling) implementation. 
+- Setting the default Transformers to `>= 4.28.0.dev0` directly as it merged the PR of LLaMA. With this version on Torch 1.13.1 + CUDA 11.7, we find the finetuning process could be a bit faster (~18%) than our [v1.0.0](https://github.com/wxjiao/ParroT/tree/v1.0.0/transformers/examples/pytorch/language-modeling) implementation.
+
+</details>
 
 :star: **Highlight** :star:
 - :hugs: Try the pretrained models at HuggingFace model hub: [[Alpaca-7b]](https://huggingface.co/wxjiao/alpaca-7b), [[ParroT-7b]](https://huggingface.co/wxjiao/ParroT-7b), [[ParroT-Hint-7b]](https://huggingface.co/wxjiao/ParroT-Hint-7b)
