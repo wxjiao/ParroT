@@ -381,6 +381,9 @@ Now you can talk to your own Chatbot!
 
 ## Public Impact
 
+[![Star History Chart](https://api.star-history.com/svg?repos=wxjiao/ParroT&type=Date)](https://star-history.com/#wxjiao/ParroT&Date)
+
+
 ### Acknowledgement
 This project cannot be developed without the following resources:
 - Meta AI `LLaMA`: https://github.com/facebookresearch/llama
