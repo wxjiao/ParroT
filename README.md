@@ -27,9 +27,8 @@
 
 :star: **Highlight** :star:
 - :hugs: Try the pretrained models at HuggingFace model hub:
-  -  [[LLaMA-7b]](https://huggingface.co/wxjiao/llama-7b) 
   -  [[Alpaca-7b]](https://huggingface.co/wxjiao/alpaca-7b), [[ParroT-7b]](https://huggingface.co/wxjiao/ParroT-7b), [[ParroT-Hint-7b]](https://huggingface.co/wxjiao/ParroT-Hint-7b)
-  -  [[ParroT-Hint-7b-lora]](https://huggingface.co/wxjiao/ParroT-Hint-7b-lora)
+  -  [[ParroT-Hint-7b-lora]](https://huggingface.co/wxjiao/ParroT-Hint-7b-lora) based on [[LLaMA-7b]](https://huggingface.co/wxjiao/llama-7b)
 - :page_facing_up: The preprint is available now on arxiv, refer to it for more details: [[paper]](https://arxiv.org/abs/2304.02426) 
 
 
@@ -121,6 +120,7 @@ Theoretically, the `run_clm_lora.py` script can handle both full model and LoRA 
 LLaMA-7b:
 - Original weights for the LLaMA models can be obtained by filling out this [Form](https://docs.google.com/forms/d/e/1FAIpQLSfqNECQnMkycAp2jP4Z9TFX0cGR4uf7b_fBxjY_OjhJILlKGA/viewform)
 - Convert the LLaMA weights into the HuggingFace format by following the instructions in this [Doc](https://huggingface.co/docs/transformers/main/model_doc/llama)
+- Optionally converted one [[LLaMA-7b]](https://huggingface.co/wxjiao/llama-7b)
 
 Bloomz-7b1-mt:
 - Available on HuggingFace: [Bloomz-7b1-mt](https://huggingface.co/bigscience/bloomz-7b1-mt)
