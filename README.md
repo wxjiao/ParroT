@@ -26,7 +26,10 @@
 </details>
 
 :star: **Highlight** :star:
-- :hugs: Try the pretrained models at HuggingFace model hub: [[Alpaca-7b]](https://huggingface.co/wxjiao/alpaca-7b), [[ParroT-7b]](https://huggingface.co/wxjiao/ParroT-7b), [[ParroT-Hint-7b]](https://huggingface.co/wxjiao/ParroT-Hint-7b)
+- :hugs: Try the pretrained models at HuggingFace model hub:
+  -  [[LLaMA-7b]](https://huggingface.co/wxjiao/llama-7b) 
+  -  [[Alpaca-7b]](https://huggingface.co/wxjiao/alpaca-7b), [[ParroT-7b]](https://huggingface.co/wxjiao/ParroT-7b), [[ParroT-Hint-7b]](https://huggingface.co/wxjiao/ParroT-Hint-7b)
+  -  [[ParroT-Hint-7b-lora]](https://huggingface.co/wxjiao/ParroT-Hint-7b-lora)
 - :page_facing_up: The preprint is available now on arxiv, refer to it for more details: [[paper]](https://arxiv.org/abs/2304.02426) 
 
 
