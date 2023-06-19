@@ -26,7 +26,7 @@
 </details>
 
 :star: **Highlight** :star:
-- :hugs: Try the pretrained models at HuggingFace model hub:
+- :hugs: Try the pretrained models at Hugging Face model hub:
   -  [[Alpaca-7b]](https://huggingface.co/wxjiao/alpaca-7b), [[ParroT-7b]](https://huggingface.co/wxjiao/ParroT-7b), [[ParroT-Hint-7b]](https://huggingface.co/wxjiao/ParroT-Hint-7b)
   -  [[ParroT-Hint-7b-lora]](https://huggingface.co/wxjiao/ParroT-Hint-7b-lora) based on [[LLaMA-7b]](https://huggingface.co/wxjiao/llama-7b)
 - :page_facing_up: The preprint is available now on arxiv, refer to it for more details: [[paper]](https://arxiv.org/abs/2304.02426) 
@@ -74,7 +74,7 @@ The inspection hasn’t found serious violation of laws and regulations. The mar
 
 ### Environment
 
-We develop ParroT based on open-sourced LLMs (e.g., LLaMA, Bloomz) with HuggingFace's transformers library.
+We develop ParroT based on open-sourced LLMs (e.g., LLaMA, Bloomz) with Hugging Face's transformers library.
 
 Framework Versions:
 - Python 3.8.12
@@ -108,7 +108,7 @@ python3 scripts/convert_alpaca_to_hf.py \
 
 
 ### Finetune
-We modify the example script of language modeling in transformers for finetuning, i.e., `run_clm.py` with the built in HuggingFace `Trainer`.
+We modify the example script of language modeling in transformers for finetuning, i.e., `run_clm.py` with the built in Hugging Face `Trainer`.
 So it would be easy to get started if you are familiar with `run_clm.py`. Also, this script supports data streaming, which might be helpful for handling larger datasets. [DeepSpeed ZeRO stage 2/3](https://github.com/microsoft/DeepSpeed) is adopted for distributed training.
 
 The resulting finetuning scripts are named as [`run_clm_llms.py`](https://github.com/wxjiao/ParroT/blob/master/transformers/examples/pytorch/language-modeling/run_clm_llms.py) and [`run_clm_lora.py`](https://github.com/wxjiao/ParroT/blob/master/transformers/examples/pytorch/language-modeling/run_clm_lora.py) for full model training and LoRA training, respectively.
@@ -119,11 +119,11 @@ Theoretically, the `run_clm_lora.py` script can handle both full model and LoRA 
 
 LLaMA-7b:
 - Original weights for the LLaMA models can be obtained by filling out this [Form](https://docs.google.com/forms/d/e/1FAIpQLSfqNECQnMkycAp2jP4Z9TFX0cGR4uf7b_fBxjY_OjhJILlKGA/viewform)
-- Convert the LLaMA weights into the HuggingFace format by following the instructions in this [Doc](https://huggingface.co/docs/transformers/main/model_doc/llama)
+- Convert the LLaMA weights into the Hugging Face format by following the instructions in this [Doc](https://huggingface.co/docs/transformers/main/model_doc/llama)
 - Optionally converted one [[LLaMA-7b]](https://huggingface.co/wxjiao/llama-7b)
 
 Bloomz-7b1-mt:
-- Available on HuggingFace: [Bloomz-7b1-mt](https://huggingface.co/bigscience/bloomz-7b1-mt)
+- Available on Hugging Face: [Bloomz-7b1-mt](https://huggingface.co/bigscience/bloomz-7b1-mt)
 
 Example usages on 8 A100 by 1 node:
 
@@ -336,7 +336,7 @@ There are several interesting observations:
 ## Run LLMs on your MacBook
 
 Try [llama.cpp](https://github.com/ggerganov/llama.cpp) to run the LLMs using 4-bit quantization on a MacBook.
-We adopt a specific fork from [comex/llama.cpp](https://github.com/comex/llama.cpp/tree/convert-script) which supports the conversion of HuggingFace models to `ggml` format.
+We adopt a specific fork from [comex/llama.cpp](https://github.com/comex/llama.cpp/tree/convert-script) which supports the conversion of Hugging Face models to `ggml` format.
 
 We recommend the use of Python 3.10.10 for `convert.py` since we encountered bugs with Python 3.9.5.
 > TypeError: 'staticmethod' object is not callable
@@ -391,7 +391,7 @@ Now you can talk to your own Chatbot!
 This project cannot be developed without the following resources:
 - Meta AI `LLaMA`: https://github.com/facebookresearch/llama
 - BigScience `Bloomz`: https://huggingface.co/bigscience/bloom
-- HuggingFace developers on `LLaMA`: https://github.com/huggingface/transformers/pull/21955
+- Hugging Face developers on `LLaMA`: https://github.com/huggingface/transformers/pull/21955
 - Stanford `Alpaca`: https://github.com/tatsu-lab/stanford_alpaca
 - `llama.cpp` by [@ggerganov](https://github.com/ggerganov/llama.cpp) and [@comex](https://github.com/comex/llama.cpp)
 
