@@ -327,10 +327,9 @@ There are several interesting observations:
 - LoRA seems to prevent LLMs from overfitting which benefits the high-resource De-En translation but restricts the instruction learning of other directions. The limited trainable parameters (only ~4.2M) may explain this observation.
 
 <div align="center">
-    <img width="70%" alt="alpaca" src="https://user-images.githubusercontent.com/31032829/231996281-40811fdf-e0ef-4029-8966-a7efaee7e508.png">
+    <img width="70%" alt="alpaca" src="https://github.com/wxjiao/ParroT/assets/31032829/654014cc-5450-4855-bb05-aeaf9fd5b5da">
     <p class="image-caption">Caption: Translation performance of LLMs on Flores subsets and WMT22 test sets.</p>
 </div>
-
 
 
 ## Run LLMs on your MacBook
