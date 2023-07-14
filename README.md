@@ -13,10 +13,10 @@
 --->
 
 :fire: **Update**
-- [2023/06/14] Releasing detailed instruction data and scripts on [@InstructMT](https://github.com/wxjiao/InstructMT).
+- [2023/07/14] Incorporated `flash-attention` into BLOOM for long-context training; observed about 20-30% speedup with other settings fixed.
 
-<details>
-    
+<details> 
+- [2023/06/14] Releasing detailed instruction data and scripts on [@InstructMT](https://github.com/wxjiao/InstructMT).   
 - The WMT22 test sets are made available.
 - For medium-to-small models (e.g., 7B), we recommend ZeRO2+offload rather than ZerO3; use gradient accumulation to maximize GPU usage.
 - Important optimizations: `preprocess_function` to be 4-5X faster; `DataCollatorForSeq2Seq` for batch-wise padding to save  5-10% GPU usage.
@@ -81,6 +81,8 @@ Framework Versions:
 - Pytorch 1.13.1+cu117
 - Transformers (git+https://github.com/huggingface/transformers.git) 
 - Peft (git+https://github.com/huggingface/peft.git)
+- Flash-attention
+- Triton
 - Other requirements
 ```
 pip install -r requirements.txt
