@@ -82,8 +82,8 @@ Framework Versions:
 - Pytorch 1.13.1+cu117
 - Transformers (git+https://github.com/huggingface/transformers.git) 
 - Peft (git+https://github.com/huggingface/peft.git)
-- Flash-attention
-- Triton
+- Flash-attn
+- Triton 2.0.0.dev20221202
 - Other requirements
 ```
 pip install -r requirements.txt
@@ -119,6 +119,7 @@ Theoretically, the `run_clm_lora.py` script can handle both full model and LoRA 
 
 **For LoRA training, we recommend to use ZeRO2 since ZeRO3 is very unstable when saving `adapter_model.bin`.**
 
+For long-context training, we provide the [`run_clm_llms_flash.py`](https://github.com/wxjiao/ParroT/blob/master/transformers/examples/pytorch/language-modeling/run_clm_llms_flash.py) to improve the memory efficiency.
 
 LLaMA-7b:
 - Original weights for the LLaMA models can be obtained by filling out this [Form](https://docs.google.com/forms/d/e/1FAIpQLSfqNECQnMkycAp2jP4Z9TFX0cGR4uf7b_fBxjY_OjhJILlKGA/viewform)
