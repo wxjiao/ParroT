@@ -3,7 +3,9 @@
 <div align="center">
     <img width="25%" alt="ParroT" src="https://github.com/wxjiao/ParroT/assets/31032829/9893aba1-7ea3-4c76-a995-9b12aff44950">
     <h2>
-    ParroT: Translating During Chat Using Large Language Models
+    ParroT: Translating During Chat Using Large Language Models <br><br>
+     <a href="https://arxiv.org/abs/2304.02426"> <img alt="paper link" src="https://img.shields.io/badge/Paper-arXiv-red"> </a>
+     <a href="https://github.com/wxjiao/InstructMT"> <img alt="data link" src="https://img.shields.io/badge/Data-InstructMT-blue"> </a> 
     </h2>
 </div>
 
@@ -30,7 +32,10 @@
 - :hugs: Try the pretrained models at HuggingFace model hub:
   -  [[Alpaca-7b]](https://huggingface.co/wxjiao/alpaca-7b), [[ParroT-7b]](https://huggingface.co/wxjiao/ParroT-7b), [[ParroT-Hint-7b]](https://huggingface.co/wxjiao/ParroT-Hint-7b)
   -  [[ParroT-Hint-7b-lora]](https://huggingface.co/wxjiao/ParroT-Hint-7b-lora) based on [[LLaMA-7b]](https://huggingface.co/wxjiao/llama-7b)
+
+<!---
 - :page_facing_up: The preprint is available now on arxiv, refer to it for more details: [[paper]](https://arxiv.org/abs/2304.02426) 
+--->
 
 
 ## ParroT
