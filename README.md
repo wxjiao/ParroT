@@ -15,7 +15,7 @@
 --->
 
 :fire: **Update**
-- [2023/07/14] Incorporated `flash-attention` into BLOOM for long-context training; observed about 20-30% speedup with other settings fixed.
+- [2023/07/14] Incorporated [`flash-attention`](https://github.com/wxjiao/ParroT/blob/master/transformers/examples/pytorch/language-modeling/run_clm_llms_flash.py) into BLOOM for long-context training; observed about 20-30% speedup with other settings fixed.
 
 <details> 
 
