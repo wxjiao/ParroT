@@ -401,6 +401,7 @@ This project cannot be developed without the following resources:
 - BigScience `Bloomz`: https://huggingface.co/bigscience/bloom
 - HuggingFace developers on `LLaMA`: https://github.com/huggingface/transformers/pull/21955
 - Stanford `Alpaca`: https://github.com/tatsu-lab/stanford_alpaca
+- OptimalScale: https://github.com/OptimalScale/LMFlow
 - `llama.cpp` by [@ggerganov](https://github.com/ggerganov/llama.cpp) and [@comex](https://github.com/comex/llama.cpp)
 
 
