@@ -320,6 +320,15 @@ python3 inference_lora.py --model-name-or-path <your_proj_path>/llama-7b \
 </details>
 
 
+### MT Evaluation
+We adopt two metrics, SacreBLEU and COMET (Unbabel/wmt22-comet-da), which are driven by _n_-gram similarity and cross-lingual pretrained models, respectively. 
+```
+# SacreBLEU
+cat test_rand_50.zh-en.none-hint.txt | sacrebleu -w 2 test_rand_50.en.txt
+
+# COMET
+comet-score -r test_rand_50.en.txt -s test_rand_50.zh.txt -t test_rand_50.zh-en.none-hint.txt --quiet --only_system
+```
 
 
 ### Finetuned LLMs and Results
