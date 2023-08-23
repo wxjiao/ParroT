@@ -109,6 +109,7 @@ if __name__ == "__main__":
     temp = args.template
     template = "prompt_input" if temp > 0 else "prompt_no_input"
     # Load checkpoints
+    print(f'Loading Mater Model weights from path: {model_name_or_path}')
     model = AutoModelForCausalLM.from_pretrained(model_name_or_path, torch_dtype=torch.float16, device_map="auto")
     print(model.hf_device_map)
     # bloom uses only fast tokenize
