@@ -113,8 +113,10 @@ if __name__ == "__main__":
     temp = args.template
     template = "prompt_input" if temp > 0 else "prompt_no_input"
     # Load checkpoints
+    print(f'Loading Mater Model weights from path: {model_name_or_path}')
     model = AutoModelForCausalLM.from_pretrained(model_name_or_path, torch_dtype=torch.float16, device_map="auto")
     if lora_weights is not None and os.path.exists(lora_weights):
+        print(f'Loading LoRA weights from path: {lora_weights}')
         model = PeftModel.from_pretrained(model, lora_weights, torch_dtype=torch.float16)
     print(model.hf_device_map)
 
