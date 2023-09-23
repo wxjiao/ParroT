@@ -336,11 +336,14 @@ def main():
         if extension == "txt":
             extension = "text"
             dataset_args["keep_linebreaks"] = data_args.keep_linebreaks
+        # xxx: add data path info
+        logger.info(f"Loading dataset from file: {data_files}")
         raw_datasets = load_dataset(
             extension,
             data_files=data_files,
             cache_dir=model_args.cache_dir,
             use_auth_token=True if model_args.use_auth_token else None,
+            streaming=data_args.streaming,  # xxx (2023-09-20): add streaming for local data
             **dataset_args,
         )
         # If no validation data is there, validation_split_percentage will be used to divide the dataset.
@@ -351,6 +354,7 @@ def main():
                 split=f"train[:{data_args.validation_split_percentage}%]",
                 cache_dir=model_args.cache_dir,
                 use_auth_token=True if model_args.use_auth_token else None,
+                streaming=data_args.streaming,  # xxx: add streaming for local data
                 **dataset_args,
             )
             raw_datasets["train"] = load_dataset(
@@ -359,6 +363,7 @@ def main():
                 split=f"train[{data_args.validation_split_percentage}%:]",
                 cache_dir=model_args.cache_dir,
                 use_auth_token=True if model_args.use_auth_token else None,
+                streaming=data_args.streaming,  # xxx (2023-09-20): add streaming for local data
                 **dataset_args,
             )
 
@@ -394,6 +399,7 @@ def main():
         "revision": model_args.model_revision,
         "use_auth_token": True if model_args.use_auth_token else None,
     }
+    logger.info(f"Tokenizer_kwargs: {tokenizer_kwargs}")  # xxx (2023-09-20)
     if model_args.tokenizer_name:
         tokenizer = AutoTokenizer.from_pretrained(model_args.tokenizer_name, **tokenizer_kwargs)
     elif model_args.model_name_or_path:
@@ -410,6 +416,8 @@ def main():
             if model_args.torch_dtype in ["auto", None]
             else getattr(torch, model_args.torch_dtype)
         )
+        # xxx (2023-09-20): add dtype info
+        logger.info(f"Loading checkpoints in dtype: {torch_dtype}")
         model = AutoModelForCausalLM.from_pretrained(
             model_args.model_name_or_path,
             from_tf=bool(".ckpt" in model_args.model_name_or_path),
@@ -448,7 +456,12 @@ def main():
     # Preprocessing the datasets.
     # First we tokenize all the texts.
     if training_args.do_train:
-        column_names = list(raw_datasets["train"].features)
+        # xxx: 2023-09-20, no features in local files
+        if data_args.streaming and data_args.train_file is not None:
+            column_names = list(list(raw_datasets["train"].take(1))[0])
+        else:
+            column_names = list(raw_datasets["train"].features)
+        #column_names = list(raw_datasets["train"].features)
     else:
         column_names = list(raw_datasets["validation"].features)
     text_column_name = "text" if "text" in column_names else column_names[0]
@@ -521,6 +534,7 @@ def main():
     # xxx: 2023-03-14
     # In Opt, "<pad>": 1
     tok_logger = transformers.utils.logging.get_logger("transformers.tokenization_utils_base")
+
     # xxx: 2023-05-17, leave padding to DataCollatorForSeq2Seq for batch padding and avoid unnecessary paddings
     def preprocess_function(examples):
         with CaptureLogger(tok_logger) as cl:
