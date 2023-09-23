@@ -3,7 +3,7 @@
 <div align="center">
     <img width="25%" alt="ParroT" src="https://github.com/wxjiao/ParroT/assets/31032829/9893aba1-7ea3-4c76-a995-9b12aff44950">
     <h2>
-    ParroT: Translating During Chat Using Large Language Models <br><br>
+    ParroT: Translating During Chat Using Large Language Models tuned with Human Translation and Feedback <br><br>
      <a href="https://arxiv.org/abs/2304.02426"> <img alt="paper link" src="https://img.shields.io/badge/Paper-arXiv-red"> </a>
      <a href="https://github.com/wxjiao/InstructMT"> <img alt="data link" src="https://img.shields.io/badge/Data-InstructMT-blue"> </a> 
     </h2>
@@ -11,10 +11,11 @@
 
 <!---
 :parrot: 
-# ParroT: Translating During Chat Using Large Language Models
+# ParroT: Translating During Chat Using Large Language Models tuned with Human Translation and Feedback
 --->
 
 :fire: **Update**
+- [2023/09/23] Fixed the streaming mode for **local** large datasets, which originally supports only datasets in Hugging Face Datasets; need to use `--max_steps` instead of `--num_train_epochs` due to the IterableDataset type.
 - [2023/07/14] Incorporated [`flash-attention`](https://github.com/wxjiao/ParroT/blob/master/transformers/examples/pytorch/language-modeling/run_clm_llms_flash.py) into BLOOM for long-context training; observed about 20-30% speedup with other settings fixed.
 
 <details> 
@@ -183,11 +184,14 @@ torchrun --nnodes $HOST_NUM --node_rank $INDEX --nproc_per_node 8 \
     --validation_split_percentage 0 \
     --fp16 True \
     --fp16_full_eval True \
-    --streaming \
     --ddp_timeout 3600 \
     --seed 1 \
     --gradient_checkpointing True \
     --output_dir ${model_save}
+
+# Use streaming for large datasets and specify the max_steps
+#    --streaming \
+#    --max_steps 2500 \
 ```
 </details>
 
@@ -241,7 +245,6 @@ torchrun --nnodes $HOST_NUM --node_rank $INDEX --nproc_per_node 8 \
     --validation_split_percentage 0 \
     --fp16 True \
     --fp16_full_eval True \
-    --streaming \
     --ddp_timeout 3600 \
     --seed 1 \
     --gradient_checkpointing True \
@@ -338,7 +341,10 @@ Currently, we finetuned the following LLMs for ParroT with the evaluation mainly
 - [x] LLaMA-7b
 - [x] Bloomz-mt-7b
 - [x] ParroT-LoRA
+
+<!---
 - [ ] 8bit Training (high requirements for both environments and GPU types)
+--->
 
 There are several interesting observations:
 - ParroT based on Bloomz-mt-7b also works well with hints. Besides, Bloomz-mt-7b shows stronger ability in the modeling of Chinese texts.
