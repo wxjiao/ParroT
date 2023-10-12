@@ -15,6 +15,7 @@
 --->
 
 :fire: **Update**
+- [2023/10/12] **ParroT** accepted to EMNLP 2023 (Findings)!
 - [2023/09/23] Fixed the streaming mode for **local** large datasets, which originally supports only datasets in Hugging Face Datasets; need to use `--max_steps` instead of `--num_train_epochs` due to the IterableDataset type.
 - [2023/07/14] Incorporated [`flash-attention`](https://github.com/wxjiao/ParroT/blob/master/transformers/examples/pytorch/language-modeling/run_clm_llms_flash.py) into BLOOM for long-context training; observed about 20-30% speedup with other settings fixed.
 
@@ -426,9 +427,9 @@ Please kindly cite our paper if you find it helpful:
 
 ```ruby
 @inproceedings{jiao2023parrot,
-  title={ParroT: Translating During Chat Using Large Language Models}, 
-  author={Wenxiang Jiao and Jen-tse Huang and Wenxuan Wang and Xing Wang and Shuming Shi and Zhaopeng Tu},
-  booktitle = {ArXiv},
+  title={ParroT: Translating during Chat using Large Language Models tuned with Human Translation and Feedback}, 
+  author={Wenxiang Jiao and Jen-tse Huang and Wenxuan Wang and Zhiwei He and Tian Liang and Xing Wang and Shuming Shi and Zhaopeng Tu},
+  booktitle = {Findings of EMNLP},
   year      = {2023}
 }
 ```
