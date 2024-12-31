@@ -21,7 +21,6 @@
 
 <details> 
 
-
 - [2023/06/14] Releasing detailed instruction data and scripts on [@InstructMT](https://github.com/wxjiao/InstructMT). 
 - The WMT22 test sets are made available.
 - For medium-to-small models (e.g., 7B), we recommend ZeRO2+offload rather than ZerO3; use gradient accumulation to maximize GPU usage.
